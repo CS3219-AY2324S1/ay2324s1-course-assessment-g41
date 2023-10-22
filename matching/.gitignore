@@ -32,7 +32,7 @@ key.json
 .DS_Store
 
 # Ignore built ts files
-dist
+/dist
 
 # ignore yarn.lock
 yarn.lock
