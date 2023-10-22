@@ -31,8 +31,7 @@ class Server {
         });
     }
     runOnStart() {
-        console.log("Running pubsub ---- test haiya ==== oicb subscriber on server start");
-        console.log("haiya wtf---=========");
+        console.log("Running pubsub subscriber on server start");
         matchingRequestCache_1.default.flushAll();
         matchingPairCache_1.default.flushAll();
         (0, matchingSubscriber_1.processMatching)();

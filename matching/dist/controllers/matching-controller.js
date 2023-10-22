@@ -21,13 +21,19 @@ function getMatchingStatus(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         // TODO: pull data from db
         const userId = req.params.id;
-        console.log("in be get matching wohooasdasd, matching keys=", matchingRequestCache_1.default.keys());
-        console.log("in be get matching wohooasdasd, pair keys=", matchingPairCache_1.default.keys());
-        console.log("in be get matching wohooasdasd, userid=", userId);
+        // console.log(
+        //   "in be get matching, matching keys=",
+        //   matchingRequestCache.keys()
+        // );
+        // console.log(
+        //   "in be get matching, pair keys=",
+        //   matchingPairCache.keys()
+        // );
+        // console.log("in be get matching, userid=", userId);
         const matchingPair = matchingPairCache_1.default.get(userId);
-        console.log("in be get matching wohooasdasd, matchingPair=", matchingPair);
+        // console.log("in be get matching, matchingPair=", matchingPair);
         var status = matchingRequestCache_1.default.get(userId);
-        console.log("in be get matching wohooasdasd, status=", status);
+        // console.log("in be get matching, status=", status);
         if (matchingPair !== undefined) {
             const roomId = matchingPair.roomId;
             res.status(200).json({ roomId, status: status_1.Status.paired });
