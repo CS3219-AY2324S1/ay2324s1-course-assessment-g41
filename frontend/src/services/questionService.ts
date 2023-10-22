@@ -1,12 +1,11 @@
 import { Question } from "@/@types/models/question";
-
 import { QuestionComplexity } from "@/@types/models/question";
+import { BE_API } from "@/utils/api";
+import authorizedAxios from "@/utils/axios/authorizedAxios";
+import { transformQuestionComplexity, transformQuestionDifficulty } from "@/utils/question";
 
-const PEER_PREP_A1_KEY = "PEER_PREP_A1_KEY";
-
-// TODO: refactor to interface with backend question microservice
 class QuestionService {
-  static addQuestion({
+  static async addQuestion({
     title,
     description,
     complexity,
@@ -28,78 +27,56 @@ class QuestionService {
         complexity,
         categories,
       });
+
+      await authorizedAxios.post(BE_API.questions.root, {
+        title, description, difficulty: transformQuestionComplexity(complexity), topics: categories
+      })
     } catch (err) {
       throw err;
     }
-
-    // local storage
-    const id = this.getLatestQuestionId();
-    const questions = this.getQuestions();
-    questions.push({
-      id,
-      title,
-      description,
-      complexity,
-      categories,
-    });
-    localStorage?.setItem(PEER_PREP_A1_KEY, JSON.stringify(questions));
   }
 
-  static removeQuestion({ id }: { id: number }) {
+  static async removeQuestion({ id }: { id: string }) {
     if (typeof window === "undefined") {
       return;
     }
 
-    const questions = this.getQuestions();
-    const filteredQuestions = questions.filter((q) => q.id !== id);
-    localStorage?.setItem(PEER_PREP_A1_KEY, JSON.stringify(filteredQuestions));
+    await authorizedAxios.delete(`${BE_API.questions.root}/${id}`)
   }
 
-  static editQuestion(questionData: Question) {
+  static async editQuestion(questionData: Question) {
     if (typeof window === "undefined") {
       return;
     }
 
     try {
       QuestionService.validateAddQuestion(questionData);
+      const { id, title, complexity, categories, description } = questionData
+      await authorizedAxios.patch(`${BE_API.questions.root}/${id}`, {
+        title, description, difficulty: transformQuestionComplexity(complexity), topics: categories
+      })
     } catch (err) {
       throw err;
     }
-
-    let allQuestions: Question[] = [];
-
-    this.getQuestions().forEach((q) => {
-      if (q.id === questionData.id) {
-        q = { ...questionData };
-      }
-      allQuestions.push(q);
-    });
-    localStorage?.setItem(PEER_PREP_A1_KEY, JSON.stringify(allQuestions));
   }
 
-  private static getLatestQuestionId() {
-    const questions = this.getQuestions();
-    return questions.length > 0 ? questions[questions.length - 1].id + 1 : 1;
-  }
-
-  static getQuestions() {
+  static async getQuestions() {
     if (typeof window === "undefined") {
       return [];
     }
 
-    const storage = localStorage?.getItem(PEER_PREP_A1_KEY);
-    if (!storage) {
-      return [];
-    }
-    const questions: Question[] = JSON.parse(storage);
-    return questions;
-  }
-  static getQuestion(id: number) {
-    const questions: Question[] = QuestionService.getQuestions();
-    const filteredQuestions = questions.filter((q) => q.id === id);
-    return filteredQuestions.length > 0 ? filteredQuestions[0] : null;
+    const { data }: { data: { title: string, difficulty: number, description: string, topics: string[], _id: string }[] } = await authorizedAxios.get(BE_API.questions.root)
+    return data.map(d => ({title: d.title, complexity: transformQuestionDifficulty(d.difficulty), description: d.description, categories: d.topics, id: d._id} as Question))
   }
 
+  static async getQuestion(id: string) {
+    const { data }: { data: { title: string, difficulty: number, description: string, topics: string[], _id: string } } = await authorizedAxios.get(`${BE_API.questions.root}/${id}`)
+
+    return ({title: data.title, complexity: transformQuestionDifficulty(data.difficulty), description: data.description, categories: data.topics, id: data._id} as Question)
+    
+  }
+
+  // TODO: add validation from backend question service
   private static validateAddQuestion({
     title,
     description,
@@ -127,30 +104,30 @@ class QuestionService {
     }
 
     // check if duplicate exists
-    const questions = this.getQuestions();
-    const isDuplicate =
-      questions
-        .filter(
-          (q) =>
-            q.title === title &&
-            q.description === description &&
-            q.complexity === complexity &&
-            q.categories.length === categories.length,
-        )
-        .filter((q) => {
-          let setOfCategories = new Set([...categories]);
-          q.categories.forEach((cat) => {
-            if (!setOfCategories.has(cat)) {
-              return false;
-            }
-          });
+    // const questions = this.getQuestions();
+    // const isDuplicate =
+    //   questions
+    //     .filter(
+    //       (q) =>
+    //         q.title === title &&
+    //         q.description === description &&
+    //         q.complexity === complexity &&
+    //         q.categories.length === categories.length,
+    //     )
+    //     .filter((q) => {
+    //       let setOfCategories = new Set([...categories]);
+    //       q.categories.forEach((cat) => {
+    //         if (!setOfCategories.has(cat)) {
+    //           return false;
+    //         }
+    //       });
 
-          return true;
-        }).length > 0;
+    //       return true;
+    //     }).length > 0;
 
-    if (isDuplicate) {
-      throw new Error("Exact question already exists. No change detected.");
-    }
+    // if (isDuplicate) {
+    //   throw new Error("Exact question already exists. No change detected.");
+    // }
 
     return true;
   }

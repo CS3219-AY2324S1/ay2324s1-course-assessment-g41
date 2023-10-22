@@ -31,7 +31,6 @@ export const QuestionDetails = ({
   description,
   id,
   categories,
-
   isPreview = false,
 }: Question & { isPreview?: boolean }) => {
   const { removeQuestion } = useQuestions();
@@ -95,7 +94,7 @@ export const QuestionDetails = ({
           <Button size="sm" leftIcon={<BsPencilSquare />} onClick={() => setIsEdit(!isEdit)}>
             Edit
           </Button>
-          <Link href={"/questions"}>
+          <Link href={"/coding-questions"}>
             <Button
               size="sm"
               leftIcon={<BsTrash2 />}
@@ -110,14 +109,14 @@ export const QuestionDetails = ({
       )}
     </Flex>
   ) : (
-    <QuestionForm
-      question={{
-        title,
-        complexity,
-        description,
-        id,
-        categories,
-      }}
-    />
-  );
+      <QuestionForm
+        question={{
+          title,
+          complexity,
+          description,
+          id,
+          categories,
+        }}
+      />
+    );
 };

@@ -1,5 +1,6 @@
 // BE_API contains api endpoints we use to query our host backend
 const ROOTS_USER = "/user";
+const ROOT_QUESTION = "/question";
 
 export const BE_API = {
   auth: {
@@ -14,6 +15,9 @@ export const BE_API = {
     user: (id: string) => `${ROOTS_USER}/user/${id}`,
     // karwi: remove this
     uploadImageUrl: `${ROOTS_USER}/user/uploadImageUrl`,
+  },
+  questions: {
+    root: `${ROOT_QUESTION}/question`
   },
   topics: `${ROOTS_USER}/topics`,
   languages: `${ROOTS_USER}/languages`,

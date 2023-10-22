@@ -51,7 +51,7 @@ export const QuestionCategories = {
 
 export interface Question {
   title: string;
-  id: number;
+  id: string;
   description: string;
   categories: string[];
   complexity: QuestionComplexity;

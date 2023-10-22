@@ -168,7 +168,7 @@ export const QuestionForm = ({ question = null }: { question: Question | null })
               complexity={watch("complexity")}
               categories={watch("categories")}
               description={watch("description")}
-              id={-1}
+              id={"-1"}
               isPreview={true}
             />
           </TabPanel>
@@ -181,19 +181,19 @@ export const QuestionForm = ({ question = null }: { question: Question | null })
           try {
             question
               ? editQuestion({
-                  id: question.id,
-                  categories: data.categories ? data.categories : [],
-                  title: data.title,
-                  description: data.description,
-                  complexity: data.complexity,
-                })
+                id: question.id,
+                categories: data.categories ? data.categories : [],
+                title: data.title,
+                description: data.description,
+                complexity: data.complexity,
+              })
               : addQuestion({
-                  categories: data.categories ? data.categories : [],
-                  title: data.title,
-                  description: data.description,
-                  complexity: data.complexity,
-                });
-            router.push("/questions");
+                categories: data.categories ? data.categories : [],
+                title: data.title,
+                description: data.description,
+                complexity: data.complexity,
+              });
+            router.push("/coding-questions");
           } catch (err: any) {
             toast({
               status: "error",

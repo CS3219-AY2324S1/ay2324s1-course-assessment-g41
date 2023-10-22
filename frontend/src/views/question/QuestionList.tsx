@@ -31,7 +31,7 @@ export const QuestionsList = ({ questions }: { questions: Question[] }) => {
             hasArrow
             placement="right"
           >
-            <Link href={"/questions/add-question"}>
+            <Link href={"/coding-questions/add-question"}>
               <Button w="fit-content" leftIcon={<BsCodeSquare />} size="sm">
                 Craft Question
               </Button>
@@ -41,7 +41,7 @@ export const QuestionsList = ({ questions }: { questions: Question[] }) => {
           <Stack borderWidth={1} borderRadius={4} spacing={0} background={bgColor}>
             {questions.map((q, index) =>
               index !== questions.length - 1 ? (
-                <Link key={q.id} href={`questions/${q.id}`}>
+                <Link key={q.id} href={`coding-questions/${q.id}`}>
                   <Box key={`q-${index}`} _hover={{ background: hoverColor, cursor: "pointer" }}>
                     <Box p={4}>
                       <QuestionCard {...q} />
@@ -50,35 +50,35 @@ export const QuestionsList = ({ questions }: { questions: Question[] }) => {
                   </Box>
                 </Link>
               ) : (
-                <Link key={index} href={`questions/${q.id}`}>
-                  <Box
-                    p={4}
-                    key={`q-${index}`}
-                    _hover={{ background: hoverColor, cursor: "pointer" }}
-                  >
-                    <QuestionCard {...q} />
-                  </Box>
-                </Link>
-              ),
+                  <Link key={index} href={`coding-questions/${q.id}`}>
+                    <Box
+                      p={4}
+                      key={`q-${index}`}
+                      _hover={{ background: hoverColor, cursor: "pointer" }}
+                    >
+                      <QuestionCard {...q} />
+                    </Box>
+                  </Link>
+                ),
             )}
           </Stack>
         </>
       ) : (
-        <Alert borderRadius={16}>
-          <Stack>
-            <AlertTitle>Looks like you have not saved a question!</AlertTitle>
-            <AlertDescription>
-              This question repository helps you save questions you have encountered from past
-              interviews! You can also design and save your own question!
+          <Alert borderRadius={16}>
+            <Stack>
+              <AlertTitle>Looks like you have not saved a question!</AlertTitle>
+              <AlertDescription>
+                This question repository helps you save questions you have encountered from past
+                interviews! You can also design and save your own question!
             </AlertDescription>
-            <Link href={"/questions/add-question"}>
-              <Button w="fit-content" leftIcon={<BsCodeSquare />} size="sm">
-                Craft Question
+              <Link href={"/coding-questions/add-question"}>
+                <Button w="fit-content" leftIcon={<BsCodeSquare />} size="sm">
+                  Craft Question
               </Button>
-            </Link>
-          </Stack>
-        </Alert>
-      )}
+              </Link>
+            </Stack>
+          </Alert>
+        )}
     </Stack>
   );
 };
