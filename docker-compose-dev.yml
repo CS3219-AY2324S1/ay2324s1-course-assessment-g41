@@ -86,6 +86,7 @@ services:
     depends_on:
       - client
       - user
+      - matching
     restart: always
     build:
       dockerfile: Dockerfile.dev
@@ -105,6 +106,23 @@ services:
       - /app/node_modules
     networks:
       - frontend
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/key.json
+
+  matching:
+    container_name: matching
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./matching
+    volumes:
+      - ./matching:/home/node/app/
+    ports:
+      - 8000:3000
+    restart: on-failure
+    networks:
+      - backend
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/home/node/app/key.json
 
 volumes:
   postgres:

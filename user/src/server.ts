@@ -1,49 +1,49 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import routes from '@/routes/router';
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import routes from "@/routes/router";
 import cookieParser from "cookie-parser";
 
-
 class Server {
-    private app
-    private port
+  private app;
+  private port;
 
-    constructor() {
-        const port = process.env.SERVER_PORT
-        if (!port) {
-            console.log("Missing SERVER_PORT")
-            process.exit()
-        }
-
-        this.port = port
-        this.app = express();
-        this.configMiddleware();
-        this.configRouter()
+  constructor() {
+    const port = process.env.SERVER_PORT;
+    if (!port) {
+      console.log("Missing SERVER_PORT");
+      process.exit();
     }
 
-    private configMiddleware() {
-        this.app.use(bodyParser.urlencoded({ extended:true }));
-        this.app.use(bodyParser.json({ limit: '1mb' })); 
-        this.app.use(cookieParser()); 
+    this.port = port;
+    this.app = express();
+    this.configMiddleware();
+    this.configRouter();
+  }
 
-        this.app.use(cors({
-            origin: '*',
-        }));
-s
-    }
+  private configMiddleware() {
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(bodyParser.json({ limit: "1mb" }));
+    this.app.use(cookieParser());
 
-    private configRouter() {
-        // NOTE: Central router if necessary
-        this.app.use('/', routes);
-    }
+    this.app.use(
+      cors({
+        origin: "*",
+      })
+    );
+  }
 
-    public start() {
-        // TODO: start up config
-        this.app.listen(this.port, () => {
-            console.log("listening to port", this.port)
-        })
-    }
+  private configRouter() {
+    // NOTE: Central router if necessary
+    this.app.use("/", routes);
+  }
+
+  public start() {
+    // TODO: start up config
+    this.app.listen(this.port, () => {
+      console.log("listening to port", this.port);
+    });
+  }
 }
 
 export default Server;

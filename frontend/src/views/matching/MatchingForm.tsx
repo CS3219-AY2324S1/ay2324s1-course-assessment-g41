@@ -56,7 +56,7 @@ export const MatchingForm = () => {
   const cancelRef = React.useRef();
   const { sendMatchingRequest, getMatchingStatus } = useMatching();
   const [isLoading, setIsLoading] = useState(false);
-  // const { identity, loading, loaded, error } = useGetIdentity();
+  const { identity, loading, loaded, error } = useGetIdentity();
   const router = useRouter();
 
   return (
@@ -111,7 +111,6 @@ export const MatchingForm = () => {
         type="submit"
         onClick={handleSubmit((data) => {
           try {
-            // console.log(identity, loading, loaded, error);
             console.log(data);
             onOpen();
             setIsLoading(true);
@@ -121,6 +120,7 @@ export const MatchingForm = () => {
                 getMatchingStatus(data.userId)
                   .then((response) => {
                     const responseStatus = response.status;
+                    console.log("in frontend, identity", identity);
                     console.log("in frontend, status code", response);
                     if (intervalId && responseStatus == Status.paired) {
                       clearInterval(intervalId);
