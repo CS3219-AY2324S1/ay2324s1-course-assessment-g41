@@ -5,7 +5,7 @@ const authorizedAxios = axios.create({
   baseURL: HOST_API,
 });
 
-// karwiapi: can remove this. not needed
+// karwi: can remove this. not needed
 // Request interceptor for API calls
 // authorizedAxios.interceptors.request.use(
 //   async (config) => {

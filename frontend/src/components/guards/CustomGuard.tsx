@@ -1,7 +1,7 @@
-import { ReactNode, useCallback, useMemo } from 'react';
-import useCheckAuth from 'src/hooks/guards/useCheckAuth';
-import useCheckNotAuth from 'src/hooks/guards/useCheckNotAuth';
-import Guard from './Guard';
+import { ReactNode, useCallback, useMemo } from "react";
+import useCheckAuth from "src/hooks/guards/useCheckAuth";
+import useCheckNotAuth from "src/hooks/guards/useCheckNotAuth";
+import Guard from "./Guard";
 
 interface Props {
   children?: ReactNode;

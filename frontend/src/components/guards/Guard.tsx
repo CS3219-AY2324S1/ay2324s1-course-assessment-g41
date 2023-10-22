@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import useGuard from 'src/hooks/guards/useGuard';
+import { ReactNode } from "react";
+import useGuard from "src/hooks/guards/useGuard";
 
 interface Props {
   children?: ReactNode;

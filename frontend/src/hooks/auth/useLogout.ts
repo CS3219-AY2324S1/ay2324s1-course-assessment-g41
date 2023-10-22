@@ -1,7 +1,7 @@
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { PATH_AUTH } from 'src/routes/paths';
-import useAuthProvider from './useAuthProvider';
+import { useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { PATH_AUTH } from "src/routes/paths";
+import useAuthProvider from "./useAuthProvider";
 
 type Logout = (redirectTo?: string) => Promise<any>;
 

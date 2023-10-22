@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from "./user";
 
 export type AuthProvider = {
   login: (params?: unknown) => Promise<void>;
@@ -8,4 +8,4 @@ export type AuthProvider = {
   getIdentity: () => Promise<User>;
 };
 
-export type AuthProviderType = 'jwt';
+export type AuthProviderType = "google";

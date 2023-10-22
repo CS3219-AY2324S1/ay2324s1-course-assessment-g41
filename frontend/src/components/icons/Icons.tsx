@@ -1,11 +1,11 @@
 // @ts-nocheck
 /* eslint-disable */
 
-import { createIcon } from '@chakra-ui/icons';
+import { createIcon } from "@chakra-ui/icons";
 
 export const AdobexdLogo = createIcon({
-  displayName: 'AdobexdLogo',
-  viewBox: '0 0 24 24',
+  displayName: "AdobexdLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g clipPath="url(#clip0)">
       <path
@@ -20,8 +20,8 @@ export const AdobexdLogo = createIcon({
   ),
 });
 export const AppleLogo = createIcon({
-  displayName: 'AppleLogo',
-  viewBox: '0 0 15 18',
+  displayName: "AppleLogo",
+  viewBox: "0 0 15 18",
   path: (
     <g width="15" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#Apple_logo_black 1__a)">
@@ -39,8 +39,8 @@ export const AppleLogo = createIcon({
   ),
 });
 export const AndroidLogo = createIcon({
-  displayName: 'AndroidLogo',
-  viewBox: '0 0 16 18',
+  displayName: "AndroidLogo",
+  viewBox: "0 0 16 18",
   path: (
     <g width="16" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -63,8 +63,8 @@ export const AndroidLogo = createIcon({
   ),
 });
 export const WindowsLogo = createIcon({
-  displayName: 'WindowsLogo',
-  viewBox: '0 0 19 18',
+  displayName: "WindowsLogo",
+  viewBox: "0 0 19 18",
   path: (
     <g width="19" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -76,8 +76,8 @@ export const WindowsLogo = createIcon({
 });
 
 export const AtlassianLogo = createIcon({
-  displayName: 'AtlassianLogo',
-  viewBox: '0 0 24 24',
+  displayName: "AtlassianLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -93,8 +93,8 @@ export const AtlassianLogo = createIcon({
 });
 
 export const CartIcon = createIcon({
-  displayName: 'CartIcon',
-  viewBox: '0 0 24 24',
+  displayName: "CartIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -104,8 +104,8 @@ export const CartIcon = createIcon({
 });
 
 export const ClockIcon = createIcon({
-  displayName: 'ClockIcon',
-  viewBox: '0 0 24 24',
+  displayName: "ClockIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <g>
@@ -126,8 +126,8 @@ export const ClockIcon = createIcon({
 });
 
 export const CreditIcon = createIcon({
-  displayName: 'CreditIcon',
-  viewBox: '0 0 24 24',
+  displayName: "CreditIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -137,8 +137,8 @@ export const CreditIcon = createIcon({
 });
 
 export const DashboardLogo = createIcon({
-  displayName: 'DashboardLogo',
-  viewBox: '0 0 1000 257',
+  displayName: "DashboardLogo",
+  viewBox: "0 0 1000 257",
   path: (
     <g width="998" height="257" viewBox="0 0 998 257" fill="none">
       <g clipPath="url(#clip0)">
@@ -193,8 +193,8 @@ export const DashboardLogo = createIcon({
 });
 
 export const DashboardLogoWhite = createIcon({
-  displayName: 'DashboardLogo',
-  viewBox: '0 0 163.5 42',
+  displayName: "DashboardLogo",
+  viewBox: "0 0 163.5 42",
   path: (
     <g fill="none">
       <path
@@ -210,8 +210,8 @@ export const DashboardLogoWhite = createIcon({
 });
 
 export const DocumentIcon = createIcon({
-  displayName: 'DocumentIcon',
-  viewBox: '0 0 24 24',
+  displayName: "DocumentIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -227,8 +227,8 @@ export const DocumentIcon = createIcon({
 });
 
 export const GlobeIcon = createIcon({
-  displayName: 'GlobeIcon',
-  viewBox: '0 0 24 24',
+  displayName: "GlobeIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -270,8 +270,8 @@ export const GlobeIcon = createIcon({
 });
 
 export const HelpIcon = createIcon({
-  displayName: 'HelpIcon',
-  viewBox: '0 0 24 24',
+  displayName: "HelpIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -281,8 +281,8 @@ export const HelpIcon = createIcon({
 });
 
 export const HomeIcon = createIcon({
-  displayName: 'HomeIcon',
-  viewBox: '0 0 24 24',
+  displayName: "HomeIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -298,8 +298,8 @@ export const HomeIcon = createIcon({
 });
 
 export const InvisionLogo = createIcon({
-  displayName: 'InvisionLogo',
-  viewBox: '0 0 24 24',
+  displayName: "InvisionLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g clipPath="url(#clip0)">
       <path
@@ -315,8 +315,8 @@ export const InvisionLogo = createIcon({
 });
 
 export const JiraLogo = createIcon({
-  displayName: 'JiraLogo',
-  viewBox: '0 0 24 24',
+  displayName: "JiraLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g clipPath="url(#clip0)">
       <path
@@ -336,16 +336,10 @@ export const JiraLogo = createIcon({
 });
 
 export const MastercardIcon = createIcon({
-  displayName: 'MastercardIcon',
-  viewBox: '0 0 24 24',
+  displayName: "MastercardIcon",
+  viewBox: "0 0 24 24",
   path: (
-    <svg
-      width="24"
-      height="20"
-      viewBox="0 0 21 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="20" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="6.63158" cy="7.49999" r="6.63158" fill="#EB001B" />
       <circle cx="14.3686" cy="7.49999" r="6.63158" fill="#F79E1B" />
     </svg>
@@ -353,8 +347,8 @@ export const MastercardIcon = createIcon({
 });
 
 export const PayPalIcon = createIcon({
-  displayName: 'PayPalIcon',
-  viewBox: '0 0 24 24',
+  displayName: "PayPalIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -370,8 +364,8 @@ export const PayPalIcon = createIcon({
 });
 
 export const PersonIcon = createIcon({
-  displayName: 'PersonIcon',
-  viewBox: '0 0 24 24',
+  displayName: "PersonIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -381,8 +375,8 @@ export const PersonIcon = createIcon({
 });
 
 export const ProfileIcon = createIcon({
-  displayName: 'ProfileIcon',
-  viewBox: '0 0 24 24',
+  displayName: "ProfileIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path d="M0 0h24v24H0V0z" fill="transparent" />
@@ -395,8 +389,8 @@ export const ProfileIcon = createIcon({
 });
 
 export const RocketIcon = createIcon({
-  displayName: 'RocketIcon',
-  viewBox: '0 0 24 24',
+  displayName: "RocketIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -412,8 +406,8 @@ export const RocketIcon = createIcon({
 });
 
 export const SettingsIcon = createIcon({
-  displayName: 'SettingsIcon',
-  viewBox: '0 0 24 24',
+  displayName: "SettingsIcon",
+  viewBox: "0 0 24 24",
   // path can also be an array of elements, if you have multiple paths, lines, shapes, etc.
   path: (
     <g>
@@ -427,8 +421,8 @@ export const SettingsIcon = createIcon({
 });
 
 export const SlackLogo = createIcon({
-  displayName: 'SlackLogo',
-  viewBox: '0 0 24 24',
+  displayName: "SlackLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g clipPath="url(#clip0)" fill-rule="evenodd" clip-rule="evenodd">
       <path
@@ -452,8 +446,8 @@ export const SlackLogo = createIcon({
 });
 
 export const SpotifyLogo = createIcon({
-  displayName: 'SpotifyLogo',
-  viewBox: '0 0 24 24',
+  displayName: "SpotifyLogo",
+  viewBox: "0 0 24 24",
   path: (
     <g clipPath="url(#clip0)">
       <path
@@ -465,8 +459,8 @@ export const SpotifyLogo = createIcon({
 });
 
 export const HorizonLogo = createIcon({
-  displayName: 'horizonLogo',
-  viewBox: '0 0 179 20',
+  displayName: "horizonLogo",
+  viewBox: "0 0 179 20",
   path: (
     <g width="179" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -478,13 +472,10 @@ export const HorizonLogo = createIcon({
 });
 
 export const PeerPrepLogo = createIcon({
-  displayName: 'peerPrepLogo',
-  viewBox: '0 0 1080 1080',
+  displayName: "peerPrepLogo",
+  viewBox: "0 0 1080 1080",
   path: (
-    <g
-      transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)"
-      fill="currentColor"
-    >
+    <g transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)" fill="currentColor">
       <path
         d="M1943 7509 c-10 -10 -13 -213 -13 -945 0 -834 2 -934 16 -948 13 -14
    50 -16 254 -16 232 0 285 6 302 33 4 7 8 152 8 323 0 237 3 314 13 322 7 6
@@ -589,8 +580,8 @@ export const PeerPrepLogo = createIcon({
 
 export const SupportIcon = createIcon({
   // Doesn't display the full icon without w and h being specified
-  displayName: 'BuildIcon',
-  viewBox: '0 0 24 24',
+  displayName: "BuildIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -600,8 +591,8 @@ export const SupportIcon = createIcon({
 });
 
 export const StatsIcon = createIcon({
-  displayName: 'StatsIcon',
-  viewBox: '0 0 24 24',
+  displayName: "StatsIcon",
+  viewBox: "0 0 24 24",
   path: (
     <path
       fill="currentColor"
@@ -611,8 +602,8 @@ export const StatsIcon = createIcon({
 });
 
 export const WalletIcon = createIcon({
-  displayName: 'WalletIcon',
-  viewBox: '0 0 24 24',
+  displayName: "WalletIcon",
+  viewBox: "0 0 24 24",
   path: (
     <g>
       <path
@@ -628,16 +619,10 @@ export const WalletIcon = createIcon({
 });
 
 export const VisaIcon = createIcon({
-  displayName: 'VisaIcon',
-  viewBox: '0 0 24 24',
+  displayName: "VisaIcon",
+  viewBox: "0 0 24 24",
   path: (
-    <svg
-      width="26"
-      height="20"
-      viewBox="0 0 30 9"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="26" height="20" viewBox="0 0 30 9" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -649,8 +634,8 @@ export const VisaIcon = createIcon({
 });
 
 export const BitcoinLogo = createIcon({
-  displayName: 'BitcoinLogo',
-  viewBox: '0 0 67 14',
+  displayName: "BitcoinLogo",
+  viewBox: "0 0 67 14",
   path: (
     <svg width="67" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -666,8 +651,8 @@ export const BitcoinLogo = createIcon({
 });
 
 export const EthereumLogoOutline = createIcon({
-  displayName: 'EthereumLogoOutline',
-  viewBox: '0 0 82 82',
+  displayName: "EthereumLogoOutline",
+  viewBox: "0 0 82 82",
   path: (
     <svg width="82" height="82" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -681,8 +666,8 @@ export const EthereumLogoOutline = createIcon({
 });
 
 export const DashCurveUp = createIcon({
-  displayName: 'DashCurveUp',
-  viewBox: '0 0 134 22',
+  displayName: "DashCurveUp",
+  viewBox: "0 0 134 22",
   path: (
     <g width="134" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -697,8 +682,8 @@ export const DashCurveUp = createIcon({
   ),
 });
 export const DashCurveDown = createIcon({
-  displayName: 'DashCurveDown',
-  viewBox: '0 0 134 22',
+  displayName: "DashCurveDown",
+  viewBox: "0 0 134 22",
   path: (
     <g width="134" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -714,8 +699,8 @@ export const DashCurveDown = createIcon({
 });
 
 export const ButtonLeft = createIcon({
-  displayName: 'ButtonLeft',
-  viewBox: '0 0 44 29',
+  displayName: "ButtonLeft",
+  viewBox: "0 0 44 29",
   path: (
     <g width="44" height="29" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -728,8 +713,8 @@ export const ButtonLeft = createIcon({
 });
 
 export const ButtonRight = createIcon({
-  displayName: 'ButtonRight',
-  viewBox: '0 0 44 29',
+  displayName: "ButtonRight",
+  viewBox: "0 0 44 29",
   path: (
     <svg width="44" height="29" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -742,8 +727,8 @@ export const ButtonRight = createIcon({
 });
 
 export const Fingerprint = createIcon({
-  displayName: 'ButtonRight',
-  viewBox: '0 0 48 48',
+  displayName: "ButtonRight",
+  viewBox: "0 0 48 48",
   path: (
     <g xmlns="http://www.w3.org/2000/svg" height="48" width="48">
       <path

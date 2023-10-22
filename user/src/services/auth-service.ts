@@ -82,9 +82,10 @@ export class AuthService {
 
       const accessToken = credentials.access_token;
       const res = await fetch(
-        `https://www.googleapis.com/oauth2/v3/userinfo?access_token${accessToken}`
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
       );
       const data = await res.json();
+      console.log(data);
 
       return data;
     } catch (err) {

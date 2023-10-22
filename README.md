@@ -57,4 +57,9 @@ Prefix your commits with these identifiers for better organization of Git histor
 - `[user-service]` - backend changes
 - `[misc]` - miscellaneous changes
 
+### Working with compose
+- build-dev.sh to build the services locally
+- docker compose -f docker-compose-dev.yml up to compose the dev environment which uses binded volumes for the app code and node modules from the corresponding directory. **REQUIRED NODE DEPENDENCIES MUST ALWAYS BE INSTALLED TO USE docker-compose-dev
 
+### Testing the app
+- clean-compose.sh to compose the app cleanly.

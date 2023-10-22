@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // chakra imports
 import {
@@ -12,19 +12,15 @@ import {
   useDisclosure,
   DrawerContent,
   DrawerCloseButton,
-} from '@chakra-ui/react';
-import Content from 'src/components/sidebar/components/Content';
-import {
-  renderThumb,
-  renderTrack,
-  renderView,
-} from 'src/components/scrollbar/Scrollbar';
-import { Scrollbars } from 'react-custom-scrollbars-2';
+} from "@chakra-ui/react";
+import Content from "src/components/sidebar/components/Content";
+import { renderThumb, renderTrack, renderView } from "src/components/scrollbar/Scrollbar";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 // Assets
-import { IoMenuOutline } from 'react-icons/io5';
-import { IRoute } from 'src/@types/navigation';
-import { isWindowAvailable } from 'src/utils/navigation';
+import { IoMenuOutline } from "react-icons/io5";
+import { IRoute } from "src/@types/navigation";
+import { isWindowAvailable } from "src/utils/navigation";
 
 interface SidebarResponsiveProps {
   routes: IRoute[];
@@ -37,18 +33,15 @@ interface SidebarProps extends SidebarResponsiveProps {
 function Sidebar(props: SidebarProps) {
   const { routes } = props;
 
-  let variantChange = '0.2s linear';
-  let shadow = useColorModeValue(
-    '14px 17px 40px 4px rgba(112, 144, 176, 0.08)',
-    'unset',
-  );
+  let variantChange = "0.2s linear";
+  let shadow = useColorModeValue("14px 17px 40px 4px rgba(112, 144, 176, 0.08)", "unset");
   // Chakra Color Mode
-  let sidebarBg = useColorModeValue('white', 'navy.800');
-  let sidebarMargins = '0px';
+  let sidebarBg = useColorModeValue("white", "navy.800");
+  let sidebarMargins = "0px";
 
   // SIDEBAR
   return (
-    <Box display={{ sm: 'none', xl: 'block' }} position="fixed" minH="100%">
+    <Box display={{ sm: "none", xl: "block" }} position="fixed" minH="100%">
       <Box
         bg={sidebarBg}
         transition={variantChange}
@@ -75,18 +68,18 @@ function Sidebar(props: SidebarProps) {
 // FUNCTIONS
 
 export function SidebarResponsive(props: SidebarResponsiveProps) {
-  let sidebarBackgroundColor = useColorModeValue('white', 'navy.800');
-  let menuColor = useColorModeValue('gray.400', 'white');
+  let sidebarBackgroundColor = useColorModeValue("white", "navy.800");
+  let menuColor = useColorModeValue("gray.400", "white");
   // // SIDEBAR
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const btnRef = React.useRef(null);
 
   const { routes } = props;
   // let isWindows = navigator.platform.startsWith("Win");
   //  BRAND
 
   return (
-    <Flex display={{ sm: 'flex', xl: 'none' }} alignItems="center">
+    <Flex display={{ sm: "flex", xl: "none" }} alignItems="center">
       <Flex ref={btnRef} w="max-content" h="max-content" onClick={onOpen}>
         <Icon
           as={IoMenuOutline}
@@ -95,16 +88,14 @@ export function SidebarResponsive(props: SidebarResponsiveProps) {
           w="20px"
           h="20px"
           me="10px"
-          _hover={{ cursor: 'pointer' }}
+          _hover={{ cursor: "pointer" }}
         />
       </Flex>
       <Drawer
         isOpen={isOpen}
         onClose={onClose}
         placement={
-          isWindowAvailable() && window.document.documentElement.dir === 'rtl'
-            ? 'right'
-            : 'left'
+          isWindowAvailable() && window.document.documentElement.dir === "rtl" ? "right" : "left"
         }
         finalFocusRef={btnRef}
       >
@@ -113,8 +104,8 @@ export function SidebarResponsive(props: SidebarResponsiveProps) {
           <DrawerCloseButton
             zIndex="3"
             onClick={onClose}
-            _focus={{ boxShadow: 'none' }}
-            _hover={{ boxShadow: 'none' }}
+            _focus={{ boxShadow: "none" }}
+            _hover={{ boxShadow: "none" }}
           />
           <DrawerBody maxW="285px" px="0rem" pb="0">
             <Scrollbars

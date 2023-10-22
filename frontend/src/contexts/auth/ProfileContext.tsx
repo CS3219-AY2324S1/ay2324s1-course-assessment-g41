@@ -1,13 +1,11 @@
-import { createContext, useContext, useMemo, ReactNode } from 'react';
-import { AuthProvider } from 'src/@types/auth';
+import { createContext, useContext, useMemo, ReactNode } from "react";
+import { AuthProvider } from "src/@types/auth";
 
 export interface ProfileContextValue {
   authProvider: AuthProvider;
 }
 
-const ProfileContext = createContext<ProfileContextValue>(
-  {} as ProfileContextValue,
-);
+const ProfileContext = createContext<ProfileContextValue>({} as ProfileContextValue);
 
 /**
  * Provider for ProfileContext
@@ -30,11 +28,7 @@ export const ProfileProvider = ({
     [authProvider],
   );
 
-  return (
-    <ProfileContext.Provider value={context}>
-      {children}
-    </ProfileContext.Provider>
-  );
+  return <ProfileContext.Provider value={context}>{children}</ProfileContext.Provider>;
 };
 
 export const useProfile = () => useContext(ProfileContext);

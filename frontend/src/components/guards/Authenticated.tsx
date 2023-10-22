@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import useAuthenticated from 'src/hooks/guards/useAuthenticated';
+import { ReactNode } from "react";
+import useAuthenticated from "src/hooks/guards/useAuthenticated";
 
 interface Props {
   children?: ReactNode;

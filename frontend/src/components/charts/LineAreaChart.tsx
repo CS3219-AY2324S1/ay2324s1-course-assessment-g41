@@ -1,8 +1,8 @@
-import { ApexOptions } from 'apexcharts';
-import dynamic from 'next/dist/shared/lib/dynamic';
-import React from 'react';
-import { isWindowAvailable } from 'src/utils/navigation';
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+import { ApexOptions } from "apexcharts";
+import dynamic from "next/dist/shared/lib/dynamic";
+import React from "react";
+import { isWindowAvailable } from "src/utils/navigation";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export type ChartState = {
   chartData: ApexAxisChartSeries | ApexNonAxisChartSeries;

@@ -10,8 +10,8 @@ import {
   Thead,
   Tr,
   useColorModeValue,
-} from '@chakra-ui/react';
-import * as React from 'react';
+} from "@chakra-ui/react";
+import * as React from "react";
 
 import {
   createColumnHelper,
@@ -20,11 +20,11 @@ import {
   getSortedRowModel,
   SortingState,
   useReactTable,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 
 // Custom components
-import Card from 'src/components/card/Card';
-import Menu from 'src/components/menu/MainMenu';
+import Card from "src/components/card/Card";
+import Menu from "src/components/menu/MainMenu";
 
 type RowObj = {
   name: [string, boolean];
@@ -40,17 +40,17 @@ const columnHelper = createColumnHelper<RowObj>();
 export default function CheckTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const textColor = useColorModeValue('secondaryGray.900', 'white');
-  const borderColor = useColorModeValue('gray.200', 'whiteAlpha.100');
+  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor('name', {
-      id: 'name',
+    columnHelper.accessor("name", {
+      id: "name",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           NAME
@@ -58,24 +58,20 @@ export default function CheckTable(props: { tableData: any }) {
       ),
       cell: (info: any) => (
         <Flex align="center">
-          <Checkbox
-            defaultChecked={info.getValue()[1]}
-            colorScheme="brandScheme"
-            me="10px"
-          />
+          <Checkbox defaultChecked={info.getValue()[1]} colorScheme="brandScheme" me="10px" />
           <Text color={textColor} fontSize="sm" fontWeight="700">
             {info.getValue()[0]}
           </Text>
         </Flex>
       ),
     }),
-    columnHelper.accessor('progress', {
-      id: 'progress',
+    columnHelper.accessor("progress", {
+      id: "progress",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           PROGRESS
@@ -87,13 +83,13 @@ export default function CheckTable(props: { tableData: any }) {
         </Text>
       ),
     }),
-    columnHelper.accessor('quantity', {
-      id: 'quantity',
+    columnHelper.accessor("quantity", {
+      id: "quantity",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           QUANTITY
@@ -105,13 +101,13 @@ export default function CheckTable(props: { tableData: any }) {
         </Text>
       ),
     }),
-    columnHelper.accessor('date', {
-      id: 'date',
+    columnHelper.accessor("date", {
+      id: "date",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           DATE
@@ -137,20 +133,9 @@ export default function CheckTable(props: { tableData: any }) {
     debugTable: true,
   });
   return (
-    <Card
-      flexDirection="column"
-      w="100%"
-      px="0px"
-      overflowX={{ sm: 'scroll', lg: 'hidden' }}
-    >
+    <Card flexDirection="column" w="100%" px="0px" overflowX={{ sm: "scroll", lg: "hidden" }}>
       <Flex px="25px" mb="8px" justifyContent="space-between" align="center">
-        <Text
-          color={textColor}
-          fontSize="22px"
-          mb="4px"
-          fontWeight="700"
-          lineHeight="100%"
-        >
+        <Text color={textColor} fontSize="22px" mb="4px" fontWeight="700" lineHeight="100%">
           Check Table
         </Text>
         <Menu />
@@ -173,16 +158,13 @@ export default function CheckTable(props: { tableData: any }) {
                       <Flex
                         justifyContent="space-between"
                         align="center"
-                        fontSize={{ sm: '10px', lg: '12px' }}
+                        fontSize={{ sm: "10px", lg: "12px" }}
                         color="gray.400"
                       >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                        {flexRender(header.column.columnDef.header, header.getContext())}
                         {{
-                          asc: '',
-                          desc: '',
+                          asc: "",
+                          desc: "",
                         }[header.column.getIsSorted() as string] ?? null}
                       </Flex>
                     </Th>
@@ -202,14 +184,11 @@ export default function CheckTable(props: { tableData: any }) {
                       return (
                         <Td
                           key={cell.id}
-                          fontSize={{ sm: '14px' }}
-                          minW={{ sm: '150px', md: '200px', lg: 'auto' }}
+                          fontSize={{ sm: "14px" }}
+                          minW={{ sm: "150px", md: "200px", lg: "auto" }}
                           borderColor="transparent"
                         >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext(),
-                          )}
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </Td>
                       );
                     })}

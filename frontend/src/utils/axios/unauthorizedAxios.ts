@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 // config
-import { HOST_API } from '../../config';
+import { HOST_API } from "../../config";
 
 // Unauthorized axios queries backend APIs that doesn't need authentication
 

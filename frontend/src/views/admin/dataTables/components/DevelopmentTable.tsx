@@ -10,7 +10,7 @@ import {
   Thead,
   Tr,
   useColorModeValue,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   createColumnHelper,
   flexRender,
@@ -18,16 +18,12 @@ import {
   getSortedRowModel,
   SortingState,
   useReactTable,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 // Custom components
-import Card from 'src/components/card/Card';
-import Menu from 'src/components/menu/MainMenu';
-import {
-  AndroidLogo,
-  AppleLogo,
-  WindowsLogo,
-} from 'src/components/icons/Icons';
-import * as React from 'react';
+import Card from "src/components/card/Card";
+import Menu from "src/components/menu/MainMenu";
+import { AndroidLogo, AppleLogo, WindowsLogo } from "src/components/icons/Icons";
+import * as React from "react";
 // Assets
 
 type RowObj = {
@@ -43,18 +39,18 @@ const columnHelper = createColumnHelper<RowObj>();
 export default function ComplexTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const textColor = useColorModeValue('secondaryGray.900', 'white');
-  const iconColor = useColorModeValue('secondaryGray.500', 'white');
-  const borderColor = useColorModeValue('gray.200', 'whiteAlpha.100');
+  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const iconColor = useColorModeValue("secondaryGray.500", "white");
+  const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor('name', {
-      id: 'name',
+    columnHelper.accessor("name", {
+      id: "name",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           NAME
@@ -68,13 +64,13 @@ export default function ComplexTable(props: { tableData: any }) {
         </Flex>
       ),
     }),
-    columnHelper.accessor('tech', {
-      id: 'tech',
+    columnHelper.accessor("tech", {
+      id: "tech",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           STATUS
@@ -83,42 +79,24 @@ export default function ComplexTable(props: { tableData: any }) {
       cell: (info) => (
         <Flex align="center">
           {info.getValue().map((item: string, key: number) => {
-            if (item === 'apple') {
-              return (
-                <AppleLogo
-                  key={key}
-                  color={iconColor}
-                  me="16px"
-                  h="18px"
-                  w="15px"
-                />
-              );
-            } else if (item === 'android') {
-              return (
-                <AndroidLogo
-                  key={key}
-                  color={iconColor}
-                  me="16px"
-                  h="18px"
-                  w="16px"
-                />
-              );
-            } else if (item === 'windows') {
-              return (
-                <WindowsLogo key={key} color={iconColor} h="18px" w="19px" />
-              );
+            if (item === "apple") {
+              return <AppleLogo key={key} color={iconColor} me="16px" h="18px" w="15px" />;
+            } else if (item === "android") {
+              return <AndroidLogo key={key} color={iconColor} me="16px" h="18px" w="16px" />;
+            } else if (item === "windows") {
+              return <WindowsLogo key={key} color={iconColor} h="18px" w="19px" />;
             }
           })}
         </Flex>
       ),
     }),
-    columnHelper.accessor('date', {
-      id: 'date',
+    columnHelper.accessor("date", {
+      id: "date",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           DATE
@@ -130,13 +108,13 @@ export default function ComplexTable(props: { tableData: any }) {
         </Text>
       ),
     }),
-    columnHelper.accessor('progress', {
-      id: 'progress',
+    columnHelper.accessor("progress", {
+      id: "progress",
       header: () => (
         <Text
           justifyContent="space-between"
           align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
+          fontSize={{ sm: "10px", lg: "12px" }}
           color="gray.400"
         >
           PROGRESS
@@ -171,19 +149,9 @@ export default function ComplexTable(props: { tableData: any }) {
     debugTable: true,
   });
   return (
-    <Card
-      flexDirection="column"
-      w="100%"
-      px="0px"
-      overflowX={{ sm: 'scroll', lg: 'hidden' }}
-    >
+    <Card flexDirection="column" w="100%" px="0px" overflowX={{ sm: "scroll", lg: "hidden" }}>
       <Flex px="25px" mb="8px" justifyContent="space-between" align="center">
-        <Text
-          color={textColor}
-          fontSize="22px"
-          fontWeight="700"
-          lineHeight="100%"
-        >
+        <Text color={textColor} fontSize="22px" fontWeight="700" lineHeight="100%">
           Complex Table
         </Text>
         <Menu />
@@ -206,16 +174,13 @@ export default function ComplexTable(props: { tableData: any }) {
                       <Flex
                         justifyContent="space-between"
                         align="center"
-                        fontSize={{ sm: '10px', lg: '12px' }}
+                        fontSize={{ sm: "10px", lg: "12px" }}
                         color="gray.400"
                       >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                        {flexRender(header.column.columnDef.header, header.getContext())}
                         {{
-                          asc: '',
-                          desc: '',
+                          asc: "",
+                          desc: "",
                         }[header.column.getIsSorted() as string] ?? null}
                       </Flex>
                     </Th>
@@ -235,14 +200,11 @@ export default function ComplexTable(props: { tableData: any }) {
                       return (
                         <Td
                           key={cell.id}
-                          fontSize={{ sm: '14px' }}
-                          minW={{ sm: '150px', md: '200px', lg: 'auto' }}
+                          fontSize={{ sm: "14px" }}
+                          minW={{ sm: "150px", md: "200px", lg: "auto" }}
                           borderColor="transparent"
                         >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext(),
-                          )}
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </Td>
                       );
                     })}

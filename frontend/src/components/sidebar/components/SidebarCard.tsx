@@ -1,10 +1,10 @@
-import { Button, Flex, Link, Text, useColorModeValue } from '@chakra-ui/react';
-import { Image } from 'src/components/image/Image';
-import logoWhite from 'src/img/layout/logoWhite.png';
+import { Button, Flex, Link, Text, useColorModeValue } from "@chakra-ui/react";
+import { Image } from "src/components/image/Image";
+import logoWhite from "src/img/layout/logoWhite.png";
 
 export default function SidebarDocs() {
-  const bgColor = 'linear-gradient(135deg, #868CFF 0%, #4318FF 100%)';
-  const borderColor = useColorModeValue('white', 'navy.800');
+  const bgColor = "linear-gradient(135deg, #868CFF 0%, #4318FF 100%)";
+  const borderColor = useColorModeValue("white", "navy.800");
 
   return (
     <Flex
@@ -33,16 +33,9 @@ export default function SidebarDocs() {
       >
         <Image alt="" src={logoWhite} w="40px" h="40px" />
       </Flex>
-      <Flex
-        direction="column"
-        mb="12px"
-        align="center"
-        justify="center"
-        px="15px"
-        pt="55px"
-      >
+      <Flex direction="column" mb="12px" align="center" justify="center" px="15px" pt="55px">
         <Text
-          fontSize={{ base: 'lg', xl: '18px' }}
+          fontSize={{ base: "lg", xl: "18px" }}
           color="white"
           fontWeight="bold"
           lineHeight="150%"
@@ -52,24 +45,17 @@ export default function SidebarDocs() {
         >
           Upgrade to PRO
         </Text>
-        <Text
-          fontSize="14px"
-          color={'white'}
-          px="10px"
-          mb="14px"
-          textAlign="center"
-        >
-          Improve your development process and start doing more with PeerPrep
-          PRO!
+        <Text fontSize="14px" color={"white"} px="10px" mb="14px" textAlign="center">
+          Improve your development process and start doing more with PeerPrep PRO!
         </Text>
       </Flex>
       <Link href="https://horizon-ui.com/pro">
         <Button
           bg="whiteAlpha.300"
-          _hover={{ bg: 'whiteAlpha.200' }}
-          _active={{ bg: 'whiteAlpha.100' }}
-          mb={{ sm: '16px', xl: '24px' }}
-          color={'white'}
+          _hover={{ bg: "whiteAlpha.200" }}
+          _active={{ bg: "whiteAlpha.100" }}
+          mb={{ sm: "16px", xl: "24px" }}
+          color={"white"}
           fontWeight="regular"
           fontSize="sm"
           minW="185px"

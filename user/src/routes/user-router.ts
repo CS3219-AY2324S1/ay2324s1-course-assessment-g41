@@ -8,7 +8,7 @@ userRouter.use(AuthMiddleware.authJWT);
 
 // NOTE: No need to expose creating, should be done in registration steps?
 userRouter.get('/topics', UserController.readCurrentTopics);
-userRouter.post('/topics', UserController.addTopics);
+userRouter.post('/topics', UserController.updateTopics);
 userRouter.delete('/topics', UserController.deleteTopics);
 
 userRouter.get('/:id', UserController.getUserById);

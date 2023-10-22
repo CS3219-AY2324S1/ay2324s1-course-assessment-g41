@@ -34,10 +34,9 @@ export const QuestionDetails = ({
 
   isPreview = false,
 }: Question & { isPreview?: boolean }) => {
-
   const { removeQuestion } = useQuestions();
   const [isEdit, setIsEdit] = useState(false);
-  const bgColor = useColorModeValue('white', 'navy.800');
+  const bgColor = useColorModeValue("white", "navy.800");
 
   return !isEdit ? (
     <Flex
@@ -75,6 +74,7 @@ export const QuestionDetails = ({
                 <HStack wrap="wrap">
                   {categories?.map((cat) => (
                     <Badge
+                      key={cat}
                       variant="outline"
                       textTransform="none"
                       px={2}
@@ -92,14 +92,10 @@ export const QuestionDetails = ({
       </Stack>
       {isPreview ? null : (
         <HStack>
-          <Button
-            size="sm"
-            leftIcon={<BsPencilSquare />}
-            onClick={() => setIsEdit(!isEdit)}
-          >
+          <Button size="sm" leftIcon={<BsPencilSquare />} onClick={() => setIsEdit(!isEdit)}>
             Edit
           </Button>
-          <Link href={'/questions'}>
+          <Link href={"/questions"}>
             <Button
               size="sm"
               leftIcon={<BsTrash2 />}
@@ -114,14 +110,14 @@ export const QuestionDetails = ({
       )}
     </Flex>
   ) : (
-      <QuestionForm
-        question={{
-          title,
-          complexity,
-          description,
-          id,
-          categories,
-        }}
-      />
-    );
+    <QuestionForm
+      question={{
+        title,
+        complexity,
+        description,
+        id,
+        categories,
+      }}
+    />
+  );
 };

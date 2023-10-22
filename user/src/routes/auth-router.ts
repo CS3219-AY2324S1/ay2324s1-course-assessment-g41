@@ -6,7 +6,7 @@ const authRouter = Router();
 authRouter.get('/google', AuthController.googleAuth);
 authRouter.post('/refresh', AuthController.refresh);
 authRouter.get('/googleRedirect', AuthController.googleRedirect);
-authRouter.get('/checkAuth', AuthController.googleRedirect);
-authRouter.get('/logout', AuthController.googleRedirect);
+authRouter.get('/checkAuth', AuthController.checkAuth);
+authRouter.get('/logout', AuthController.logout);
 
 export default authRouter;

@@ -1,19 +1,17 @@
-'use client';
-import { useState } from 'react';
-import Calendar from 'react-calendar';
-import { Text, Icon } from '@chakra-ui/react';
-import 'react-calendar/dist/Calendar.css';
+"use client";
+import { useState } from "react";
+import Calendar from "react-calendar";
+import { Text, Icon } from "@chakra-ui/react";
+import "react-calendar/dist/Calendar.css";
 // Chakra imports
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 // Custom components
-import Card from 'src/components/card/Card';
+import Card from "src/components/card/Card";
+import { Value } from "react-calendar/dist/cjs/shared/types";
 
-export default function MiniCalendar(props: {
-  selectRange: boolean;
-  [x: string]: any;
-}) {
+export default function MiniCalendar(props: { selectRange: boolean; [x: string]: any }) {
   const { selectRange, ...rest } = props;
-  const [value, onChange] = useState(new Date());
+  const [value, onChange] = useState<Value>(new Date());
   return (
     <Card
       alignItems="center"
@@ -28,7 +26,7 @@ export default function MiniCalendar(props: {
         onChange={onChange}
         value={value}
         selectRange={selectRange}
-        view={'month'}
+        view={"month"}
         tileContent={<Text color="brand.500" />}
         prevLabel={<Icon as={MdChevronLeft} w="24px" h="24px" mt="4px" />}
         nextLabel={<Icon as={MdChevronRight} w="24px" h="24px" mt="4px" />}

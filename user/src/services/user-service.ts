@@ -26,23 +26,27 @@ class UserService {
   async read(userId: string): Promise<User | null> {
     try {
       const query = `
-        SELECT users.*, languages.name AS preferred_language_name
-        FROM users
-        LEFT JOIN languages ON users.preferred_language = languages.id
-        WHERE users.id = $1
-      `;
+            SELECT *
+            FROM users
+            WHERE users.id = $1
+        `;
 
-      const userResult = await postgresClient.query<UserDao & { preferred_language_name: string }>(query, [userId]);
+        const userResult = await postgresClient.query<UserDao>(query, [userId]);
 
-      if (!userResult.rows || userResult.rows.length === 0) {
-        return null;
-      }
+        if (!userResult.rows || userResult.rows.length === 0) {
+            return null;
+        }
 
-      const user: User = {
-        ...userResult.rows[0],
-        preferred_language: userResult.rows[0].preferred_language_name,
-        preferred_topics: [],
-      };
+        const dbUser = userResult.rows[0];
+        const user: User = {
+            id: dbUser.id,
+            email: dbUser.email,
+            image: dbUser.image,
+            name: dbUser.name,
+            preferred_language: dbUser.preferred_language,
+            preferred_difficulty: dbUser.preferred_difficulty,
+            preferred_topics: [],
+        };
 
       const topicsQuery = `
         SELECT topics.*
@@ -192,6 +196,36 @@ class UserService {
       throw error;
     }
   }
+
+  async updateTopics(userId: string, topicIds: string[]): Promise<void> {
+    let begunTransaction = false
+    try {
+        await postgresClient.query('BEGIN');
+        begunTransaction = true
+
+        const deleteQuery = `
+            DELETE FROM user_topic WHERE user_id = $1
+        `;
+        await postgresClient.query(deleteQuery, [userId]);
+
+        if (topicIds.length > 0) {
+            const insertQuery = `
+                INSERT INTO user_topic (user_id, topic_id)
+                VALUES 
+                ${topicIds.map((_, i) => `($1, $${i + 2})`).join(', ')}
+            `;
+            await postgresClient.query(insertQuery, [userId, ...topicIds]);
+        }
+
+        await postgresClient.query('COMMIT');
+    } catch (error) {
+        if (begunTransaction) {
+          await postgresClient.query('ROLLBACK');
+        }
+        throw error;
+    }
+}
+
 
   async deleteTopics(userId: string, topicSlugs: string[]): Promise<void> {
     try {

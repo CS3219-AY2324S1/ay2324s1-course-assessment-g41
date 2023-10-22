@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function RootHead() {
   return (
@@ -8,7 +8,7 @@ export default function RootHead() {
       <link
         rel="shortcut icon"
         type="image/x-icon"
-        href={process.env.NEXT_PUBLIC_BASE_PATH || '' + '/favicon.ico'}
+        href={process.env.NEXT_PUBLIC_BASE_PATH || "" + "/favicon.ico"}
       />
 
       <title>PeerPrep PRO NextJS</title>

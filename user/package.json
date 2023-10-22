@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --build --clean",
-    "start": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s src -o dist && node -r tsconfig-paths/register dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s src -o dist",
+    "start": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s src -o dist && node -r tsconfig-paths/register dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +29,6 @@
     "pg": "^8.11.3",
     "tsconfig-paths": "^4.2.0",
     "tscpaths": "^0.0.9",
-    "typescript": "^5.3.0-dev.20230930"
+    "typescript": "^5.2.2"
   }
 }

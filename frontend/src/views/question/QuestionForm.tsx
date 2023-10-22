@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Heading,
   FormControl,
@@ -22,21 +22,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import {
-  Question,
-  QuestionCategories,
-  QuestionComplexity,
-} from "@/@types/models/question";
+import { Question, QuestionCategories, QuestionComplexity } from "@/@types/models/question";
 import { useForm } from "react-hook-form";
 import { useQuestions } from "@/hooks/questions/useQuestionList";
 import { QuestionDetails } from "./QuestionDetails";
 import { useRouter } from "next/navigation";
 
-export const QuestionForm = ({
-  question = null,
-}: {
-  question: Question | null;
-}) => {
+export const QuestionForm = ({ question = null }: { question: Question | null }) => {
   const {
     register,
     handleSubmit,
@@ -49,9 +41,9 @@ export const QuestionForm = ({
   });
   const { addQuestion, editQuestion } = useQuestions();
   const toast = useToast();
-  const router = useRouter()
-  const bgColor = useColorModeValue('white', 'navy.800');
-  const textColor = useColorModeValue("black", "white")
+  const router = useRouter();
+  const bgColor = useColorModeValue("white", "navy.800");
+  const textColor = useColorModeValue("black", "white");
 
   register("categories", {
     required: "At least one category must be selected.",
@@ -73,9 +65,8 @@ export const QuestionForm = ({
       {question ? null : <Text fontSize="lg">Add a question!</Text>}
       {question ? null : (
         <Text color="gray.500">
-          You can record questions you encountered in your technical interviews.
-          By saving a question here, you can easily use the question for
-          practice with your peers again.
+          You can record questions you encountered in your technical interviews. By saving a
+          question here, you can easily use the question for practice with your peers again.
         </Text>
       )}
 
@@ -102,9 +93,7 @@ export const QuestionForm = ({
                   {...register("title", { required: "Title is required." })}
                   defaultValue={question ? question.title : undefined}
                 />
-                {errors.title ? (
-                  <FormErrorMessage>{errors.title.message}</FormErrorMessage>
-                ) : null}
+                {errors.title ? <FormErrorMessage>{errors.title.message}</FormErrorMessage> : null}
               </FormControl>
 
               <FormControl isInvalid={errors.complexity ? true : false}>
@@ -124,13 +113,11 @@ export const QuestionForm = ({
                   defaultValue={question ? question.complexity : undefined}
                 >
                   {Object.values(QuestionComplexity).map((complexity) => (
-                    <option>{complexity}</option>
+                    <option key={complexity}>{complexity}</option>
                   ))}
                 </Select>
                 {errors.complexity ? (
-                  <FormErrorMessage>
-                    {errors.complexity.message}
-                  </FormErrorMessage>
+                  <FormErrorMessage>{errors.complexity.message}</FormErrorMessage>
                 ) : null}
               </FormControl>
 
@@ -147,18 +134,14 @@ export const QuestionForm = ({
                   color={textColor}
                 />
                 {errors.description ? (
-                  <FormErrorMessage>
-                    {errors.description.message}
-                  </FormErrorMessage>
+                  <FormErrorMessage>{errors.description.message}</FormErrorMessage>
                 ) : null}
               </FormControl>
 
               <FormControl isInvalid={errors.categories ? true : false}>
                 <FormLabel htmlFor="categories">Topics</FormLabel>
                 {errors.categories ? (
-                  <FormErrorMessage>
-                    {errors.categories.message}
-                  </FormErrorMessage>
+                  <FormErrorMessage>{errors.categories.message}</FormErrorMessage>
                 ) : null}
                 <CheckboxGroup
                   onChange={(val: string[]) => {
@@ -169,7 +152,7 @@ export const QuestionForm = ({
                 >
                   <SimpleGrid gap={1} columns={{ sm: 2, md: 3, lg: 5, xl: 6 }}>
                     {Object.values(QuestionCategories).map((val) => (
-                      <Checkbox value={val} size="sm" color={textColor}>
+                      <Checkbox key={val} value={val} size="sm" color={textColor}>
                         {val}
                       </Checkbox>
                     ))}
@@ -198,25 +181,23 @@ export const QuestionForm = ({
           try {
             question
               ? editQuestion({
-                id: question.id,
-                categories: data.categories ? data.categories : [],
-                title: data.title,
-                description: data.description,
-                complexity: data.complexity,
-              })
+                  id: question.id,
+                  categories: data.categories ? data.categories : [],
+                  title: data.title,
+                  description: data.description,
+                  complexity: data.complexity,
+                })
               : addQuestion({
-                categories: data.categories ? data.categories : [],
-                title: data.title,
-                description: data.description,
-                complexity: data.complexity,
-              });
-            router.push('/questions')
-          } catch (err) {
+                  categories: data.categories ? data.categories : [],
+                  title: data.title,
+                  description: data.description,
+                  complexity: data.complexity,
+                });
+            router.push("/questions");
+          } catch (err: any) {
             toast({
               status: "error",
-              description:
-                err?.message ||
-                "Unknown error encountered. Please try again later.",
+              description: err?.message || "Unknown error encountered. Please try again later.",
               isClosable: true,
               duration: 3000,
               position: "bottom",

@@ -14,7 +14,7 @@ export const isDebug = process.env.NEXT_PUBLIC_DEBUG === "true";
 
 export const VERSION = packageJson.version;
 
-export const DEFAULT_AUTH_PROVIDER: AuthProviderType = "jwt";
+export const DEFAULT_AUTH_PROVIDER: AuthProviderType = "google";
 
 export enum CacheKey {
   User = "User",

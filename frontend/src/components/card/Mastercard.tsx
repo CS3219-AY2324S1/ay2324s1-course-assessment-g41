@@ -1,17 +1,15 @@
 // Chakra imports
-import { Flex, Box, Icon, Text, Spacer } from '@chakra-ui/react';
+import { Flex, Box, Icon, Text, Spacer } from "@chakra-ui/react";
 // Custom components
-import Card from 'src/components/card/Card';
+import Card from "src/components/card/Card";
 
 // Assets
-import bgMastercard from 'src/img/dashboards/Debit.png';
-import { RiMastercardFill } from 'react-icons/ri';
+// import bgMastercard from "src/img/dashboards/Debit.png";
+import { RiMastercardFill } from "react-icons/ri";
 
-export default function Banner(props: {
-  exp: string;
-  cvv: string;
-  number: string;
-}) {
+const bgMastercard = "/img/dashboards/Debit.png";
+
+export default function Banner(props: { exp: string; cvv: string; number: string }) {
   const { exp, cvv, number, ...rest } = props;
 
   // Chakra Color Mode
@@ -21,7 +19,7 @@ export default function Banner(props: {
       backgroundRepeat="no-repeat"
       bgSize="cover"
       alignSelf="center"
-      w={{ base: '100%', md: '60%', xl: '99%' }}
+      w={{ base: "100%", md: "60%", xl: "99%" }}
       bgPosition="10%"
       mx="auto"
       p="20px"
@@ -37,7 +35,7 @@ export default function Banner(props: {
         <Spacer />
         <Flex direction="column">
           <Box>
-            <Text fontSize={{ sm: 'xl', lg: 'lg', xl: 'xl' }} fontWeight="bold">
+            <Text fontSize={{ sm: "xl", lg: "lg", xl: "xl" }} fontWeight="bold">
               {number}
             </Text>
           </Box>

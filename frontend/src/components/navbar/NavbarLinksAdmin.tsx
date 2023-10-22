@@ -24,11 +24,15 @@ import routes from "@/routes";
 import useLogout from "@/hooks/auth/useLogout";
 import { useRouter } from "next/navigation";
 import { PATH_MAIN } from "@/routes/paths";
+import useGetIdentity from "@/hooks/auth/useGetIdentity";
+import { NextAvatar } from "../image/Avatar";
 export default function HeaderLinks(props: { secondary: boolean }) {
   const { secondary } = props;
   const { colorMode, toggleColorMode } = useColorMode();
   const logout = useLogout();
   const router = useRouter();
+  const { identity } = useGetIdentity();
+
   // Chakra Color Mode
   const navbarIcon = useColorModeValue("gray.400", "white");
   let menuBg = useColorModeValue("white", "navy.800");
@@ -95,9 +99,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
             borderRadius={"50%"}
           />
           <Center top={0} left={0} position={"absolute"} w={"100%"} h={"100%"}>
-            <Text fontSize={"xs"} fontWeight="bold" color={"white"}>
-              AP
-            </Text>
+            <NextAvatar h={"40px"} w={"40px"} src={identity.image ?? ""} />
           </Center>
         </MenuButton>
         <MenuList
@@ -120,7 +122,7 @@ export default function HeaderLinks(props: { secondary: boolean }) {
               fontWeight="700"
               color={textColor}
             >
-              👋&nbsp; Hey, Adela
+              👋&nbsp; Hey, {identity.name}
             </Text>
           </Flex>
           <Flex flexDirection="column" p="10px">

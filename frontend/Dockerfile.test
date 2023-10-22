@@ -2,7 +2,7 @@
 # built in github action environment
 FROM node:alpine
 WORKDIR '/app'
-COPY ./package.json ./
+COPY ./package.json ./yarn.lock ./
 RUN yarn install
 # copy over since this is not built from docker compose
 # so not able to make use of volumes

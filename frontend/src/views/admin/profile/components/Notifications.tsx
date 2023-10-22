@@ -1,23 +1,18 @@
 // Chakra imports
-import { Flex, Text, useColorModeValue } from '@chakra-ui/react';
-import Card from 'src/components/card/Card';
+import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import Card from "src/components/card/Card";
 // Custom components
-import SwitchField from 'src/components/fields/SwitchField';
-import Menu from 'src/components/menu/MainMenu';
+import SwitchField from "src/components/fields/SwitchField";
+import Menu from "src/components/menu/MainMenu";
 
 export default function Notifications(props: { [x: string]: any }) {
   const { ...rest } = props;
   // Chakra Color Mode
-  const textColorPrimary = useColorModeValue('secondaryGray.900', 'white');
+  const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
   return (
     <Card mb="20px" {...rest}>
       <Flex align="center" w="100%" justify="space-between" mb="30px">
-        <Text
-          color={textColorPrimary}
-          fontWeight="bold"
-          fontSize="2xl"
-          mb="4px"
-        >
+        <Text color={textColorPrimary} fontWeight="bold" fontSize="2xl" mb="4px">
           Notifications
         </Text>
         <Menu />
@@ -72,20 +67,8 @@ export default function Notifications(props: { [x: string]: any }) {
         id="7"
         label="New launches and projects"
       />
-      <SwitchField
-        reversed={true}
-        fontSize="sm"
-        mb="20px"
-        id="8"
-        label="Monthly product changes"
-      />
-      <SwitchField
-        reversed={true}
-        fontSize="sm"
-        mb="20px"
-        id="9"
-        label="Subscribe to newsletter"
-      />
+      <SwitchField reversed={true} fontSize="sm" mb="20px" id="8" label="Monthly product changes" />
+      <SwitchField reversed={true} fontSize="sm" mb="20px" id="9" label="Subscribe to newsletter" />
       <SwitchField
         reversed={true}
         fontSize="sm"

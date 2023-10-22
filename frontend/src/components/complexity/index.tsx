@@ -1,20 +1,20 @@
-import { QuestionComplexity } from '@/@types/models/question';
-import { HStack, Icon, Text } from '@chakra-ui/react';
-import { PropsWithChildren } from 'react';
-import { TbStairsUp } from 'react-icons/tb';
+import { QuestionComplexity } from "@/@types/models/question";
+import { HStack, Icon, Text } from "@chakra-ui/react";
+import { PropsWithChildren } from "react";
+import { TbStairsUp } from "react-icons/tb";
 
 export const ComplexityBadge = ({ children }: PropsWithChildren) => {
-  let color = 'gray.500'; // default colour
+  let color = "gray.500"; // default colour
 
   switch (children) {
     case QuestionComplexity.EASY:
-      color = 'green.500';
+      color = "green.500";
       break;
     case QuestionComplexity.MEDIUM:
-      color = 'yellow.500';
+      color = "yellow.500";
       break;
     case QuestionComplexity.HARD:
-      color = 'red.500';
+      color = "red.500";
   }
 
   return children ? (

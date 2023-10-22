@@ -1,11 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 // ----------------------------------------------------------------------
 
-export default function useLocalStorage<ValueType>(
-  key: string,
-  defaultValue: ValueType,
-) {
+export default function useLocalStorage<ValueType>(key: string, defaultValue: ValueType) {
   const [value, setValue] = useState<ValueType>(() => {
     const storedValue = localStorage.getItem(key);
 
@@ -18,18 +15,17 @@ export default function useLocalStorage<ValueType>(
         setValue(e.newValue ? JSON.parse(e.newValue) : e.newValue);
       }
     };
-    window.addEventListener('storage', listener);
+    window.addEventListener("storage", listener);
 
     return () => {
-      window.removeEventListener('storage', listener);
+      window.removeEventListener("storage", listener);
     };
   }, [key, defaultValue]);
 
   const setValueInLocalStorage = useCallback(
     (newValue: ValueType) => {
       setValue((currentValue: ValueType) => {
-        const result =
-          typeof newValue === 'function' ? newValue(currentValue) : newValue;
+        const result = typeof newValue === "function" ? newValue(currentValue) : newValue;
 
         localStorage.setItem(key, JSON.stringify(result));
 

@@ -1,9 +1,9 @@
-import { useRequest } from 'ahooks';
-import { Options, Plugin } from 'ahooks/lib/useRequest/src/types';
-import { AxiosResponse } from 'axios';
-import { useEffect } from 'react';
-import useAuthProvider from '../auth/useAuthProvider';
-import useLogout from '../auth/useLogout';
+import { useRequest } from "ahooks";
+import { Options, Plugin } from "ahooks/lib/useRequest/src/types";
+import { AxiosResponse } from "axios";
+import { useEffect } from "react";
+import useAuthProvider from "../auth/useAuthProvider";
+import useLogout from "../auth/useLogout";
 
 /**
  * This useRequest wrapper logs the user out

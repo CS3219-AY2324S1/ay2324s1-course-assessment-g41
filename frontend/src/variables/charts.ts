@@ -1,10 +1,10 @@
-import { ApexOptions } from 'apexcharts';
+import { ApexOptions } from "apexcharts";
 
 type ApexGeneric = ApexOptions & any;
 
 export const barChartDataDailyTraffic = [
   {
-    name: 'Daily Traffic',
+    name: "Daily Traffic",
     data: [20, 30, 40, 20, 45, 50, 30],
   },
 ];
@@ -17,26 +17,26 @@ export const barChartOptionsDailyTraffic: ApexGeneric = {
   },
   tooltip: {
     style: {
-      fontSize: '12px',
+      fontSize: "12px",
       fontFamily: undefined,
     },
     onDatasetHover: {
       style: {
-        fontSize: '12px',
+        fontSize: "12px",
         fontFamily: undefined,
       },
     },
-    theme: 'dark',
+    theme: "dark",
   },
   xaxis: {
-    categories: ['00', '04', '08', '12', '14', '16', '18'],
+    categories: ["00", "04", "08", "12", "14", "16", "18"],
     show: false,
     labels: {
       show: true,
       style: {
-        colors: '#A3AED0',
-        fontSize: '14px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
       },
     },
     axisBorder: {
@@ -48,12 +48,12 @@ export const barChartOptionsDailyTraffic: ApexGeneric = {
   },
   yaxis: {
     show: false,
-    color: 'black',
+    color: "black",
     labels: {
       show: true,
       style: {
-        colors: '#CBD5E0',
-        fontSize: '14px',
+        colors: "#CBD5E0",
+        fontSize: "14px",
       },
     },
   },
@@ -72,9 +72,9 @@ export const barChartOptionsDailyTraffic: ApexGeneric = {
     },
   },
   fill: {
-    type: 'gradient',
+    type: "gradient",
     gradient: {
-      type: 'vertical',
+      type: "vertical",
       shadeIntensity: 1,
       opacityFrom: 0.7,
       opacityTo: 0.9,
@@ -82,12 +82,12 @@ export const barChartOptionsDailyTraffic: ApexGeneric = {
         [
           {
             offset: 0,
-            color: '#4318FF',
+            color: "#4318FF",
             opacity: 1,
           },
           {
             offset: 100,
-            color: 'rgba(67, 24, 255, 1)',
+            color: "rgba(67, 24, 255, 1)",
             opacity: 0.28,
           },
         ],
@@ -100,18 +100,18 @@ export const barChartOptionsDailyTraffic: ApexGeneric = {
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: '40px',
+      columnWidth: "40px",
     },
   },
 };
 
 export const barChartDataUserActivity = [
   {
-    name: 'PRODUCT A',
+    name: "PRODUCT A",
     data: [70, 55, 41, 67, 22, 43],
   },
   {
-    name: 'PRODUCT B',
+    name: "PRODUCT B",
     data: [90, 70, 60, 50, 80, 90],
   },
 ];
@@ -127,24 +127,24 @@ export const barChartOptionsUserActivity = {
   },
   tooltip: {
     style: {
-      fontSize: '12px',
+      fontSize: "12px",
     },
     onDatasetHover: {
       style: {
-        fontSize: '12px',
+        fontSize: "12px",
       },
     },
-    theme: 'dark',
+    theme: "dark",
   },
   xaxis: {
-    categories: ['S', 'M', 'T', 'W', 'T', 'F'],
+    categories: ["S", "M", "T", "W", "T", "F"],
     show: false,
     labels: {
       show: true,
       style: {
-        colors: '#A3AED0',
-        fontSize: '14px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
       },
     },
     axisBorder: {
@@ -156,19 +156,19 @@ export const barChartOptionsUserActivity = {
   },
   yaxis: {
     show: true,
-    color: 'black',
+    color: "black",
     labels: {
       show: true,
       style: {
-        colors: '#A3AED0',
-        fontSize: '14px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
       },
     },
   },
 
   grid: {
-    borderColor: 'rgba(163, 174, 208, 0.3)',
+    borderColor: "rgba(163, 174, 208, 0.3)",
     show: true,
     yaxis: {
       lines: {
@@ -186,20 +186,20 @@ export const barChartOptionsUserActivity = {
     },
   },
   fill: {
-    type: 'solid',
-    colors: ['#5E37FF', '#6AD2FF'],
+    type: "solid",
+    colors: ["#5E37FF", "#6AD2FF"],
   },
   legend: {
     show: false,
   },
-  colors: ['#5E37FF', '#6AD2FF'],
+  colors: ["#5E37FF", "#6AD2FF"],
   dataLabels: {
     enabled: false,
   },
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: '30px',
+      columnWidth: "30px",
     },
   },
 };
@@ -207,15 +207,15 @@ export const barChartOptionsUserActivity = {
 
 export const barChartDataConsumption = [
   {
-    name: 'PRODUCT A',
+    name: "PRODUCT A",
     data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
   },
   {
-    name: 'PRODUCT B',
+    name: "PRODUCT B",
     data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
   },
   {
-    name: 'PRODUCT C',
+    name: "PRODUCT C",
     data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
   },
 ];
@@ -229,26 +229,26 @@ export const barChartOptionsConsumption: ApexGeneric = {
   },
   tooltip: {
     style: {
-      fontSize: '12px',
+      fontSize: "12px",
       fontFamily: undefined,
     },
     onDatasetHover: {
       style: {
-        fontSize: '12px',
+        fontSize: "12px",
         fontFamily: undefined,
       },
     },
-    theme: 'dark',
+    theme: "dark",
   },
   xaxis: {
-    categories: ['17', '18', '19', '20', '21', '22', '23', '24', '25'],
+    categories: ["17", "18", "19", "20", "21", "22", "23", "24", "25"],
     show: false,
     labels: {
       show: true,
       style: {
-        colors: '#A3AED0',
-        fontSize: '14px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
       },
     },
     axisBorder: {
@@ -260,19 +260,19 @@ export const barChartOptionsConsumption: ApexGeneric = {
   },
   yaxis: {
     show: false,
-    color: 'black',
+    color: "black",
     labels: {
       show: false,
       style: {
-        colors: '#A3AED0',
-        fontSize: '14px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "14px",
+        fontWeight: "500",
       },
     },
   },
 
   grid: {
-    borderColor: 'rgba(163, 174, 208, 0.3)',
+    borderColor: "rgba(163, 174, 208, 0.3)",
     show: true,
     yaxis: {
       lines: {
@@ -290,34 +290,34 @@ export const barChartOptionsConsumption: ApexGeneric = {
     },
   },
   fill: {
-    type: 'solid',
-    colors: ['#5E37FF', '#6AD2FF', '#E1E9F8'],
+    type: "solid",
+    colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"],
   },
   legend: {
     show: false,
   },
-  colors: ['#5E37FF', '#6AD2FF', '#E1E9F8'],
+  colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"],
   dataLabels: {
     enabled: false,
   },
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: '20px',
+      columnWidth: "20px",
     },
   },
 };
 
 export const pieChartOptions: ApexGeneric = {
-  labels: ['Your files', 'System', 'Empty'],
-  colors: ['#4318FF', '#6AD2FF', '#EFF4FB'],
+  labels: ["Your files", "System", "Empty"],
+  colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
   chart: {
-    width: '50px',
+    width: "50px",
   },
   states: {
     hover: {
       filter: {
-        type: 'none',
+        type: "none",
       },
     },
   },
@@ -339,11 +339,11 @@ export const pieChartOptions: ApexGeneric = {
     },
   },
   fill: {
-    colors: ['#4318FF', '#6AD2FF', '#EFF4FB'],
+    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
   },
   tooltip: {
     enabled: true,
-    theme: 'dark',
+    theme: "dark",
   },
 };
 
@@ -353,11 +353,11 @@ export const pieChartData = [63, 25, 12];
 
 export const lineChartDataTotalSpent = [
   {
-    name: 'Revenue',
+    name: "Revenue",
     data: [50, 64, 48, 66, 49, 68],
   },
   {
-    name: 'Profit',
+    name: "Profit",
     data: [30, 40, 24, 46, 20, 46],
   },
 ];
@@ -373,43 +373,43 @@ export const lineChartOptionsTotalSpent: ApexOptions = {
       left: 0,
       blur: 10,
       opacity: 0.1,
-      color: '#4318FF',
+      color: "#4318FF",
     },
   },
-  colors: ['#4318FF', '#39B8FF'],
+  colors: ["#4318FF", "#39B8FF"],
   markers: {
     size: 0,
-    colors: 'white',
-    strokeColors: '#7551FF',
+    colors: "white",
+    strokeColors: "#7551FF",
     strokeWidth: 3,
     strokeOpacity: 0.9,
     strokeDashArray: 0,
     fillOpacity: 1,
     discrete: [],
-    shape: 'circle',
+    shape: "circle",
     radius: 2,
     offsetX: 0,
     offsetY: 0,
     showNullDataPoints: true,
   },
   tooltip: {
-    theme: 'dark',
+    theme: "dark",
   },
   dataLabels: {
     enabled: false,
   },
   stroke: {
-    curve: 'smooth',
+    curve: "smooth",
     // type: "line",
   },
   xaxis: {
     // type: "numeric",
-    categories: ['SEP', 'OCT', 'NOV', 'DEC', 'JAN', 'FEB'],
+    categories: ["SEP", "OCT", "NOV", "DEC", "JAN", "FEB"],
     labels: {
       style: {
-        colors: '#A3AED0',
-        fontSize: '12px',
-        fontWeight: '500',
+        colors: "#A3AED0",
+        fontSize: "12px",
+        fontWeight: "500",
       },
     },
     axisBorder: {

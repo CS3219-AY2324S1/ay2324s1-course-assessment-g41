@@ -1,22 +1,19 @@
 // Chakra imports
-import { Box, Flex, Icon, Text, useColorModeValue } from '@chakra-ui/react';
-import BarChart from 'src/components/charts/BarChart';
+import { Box, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
+import BarChart from "src/components/charts/BarChart";
 
 // Custom components
-import Card from 'src/components/card/Card';
-import {
-  barChartDataDailyTraffic,
-  barChartOptionsDailyTraffic,
-} from 'src/variables/charts';
+import Card from "src/components/card/Card";
+import { barChartDataDailyTraffic, barChartOptionsDailyTraffic } from "src/variables/charts";
 
 // Assets
-import { RiArrowUpSFill } from 'react-icons/ri';
+import { RiArrowUpSFill } from "react-icons/ri";
 
 export default function DailyTraffic(props: { [x: string]: any }) {
   const { ...rest } = props;
 
   // Chakra Color Mode
-  const textColor = useColorModeValue('secondaryGray.900', 'white');
+  const textColor = useColorModeValue("secondaryGray.900", "white");
   return (
     <Card alignItems="center" flexDirection="column" w="100%" {...rest}>
       <Flex justify="space-between" align="start" px="10px" pt="5px" w="100%">
@@ -25,20 +22,10 @@ export default function DailyTraffic(props: { [x: string]: any }) {
             Daily Traffic
           </Text>
           <Flex align="end">
-            <Text
-              color={textColor}
-              fontSize="34px"
-              fontWeight="700"
-              lineHeight="100%"
-            >
+            <Text color={textColor} fontSize="34px" fontWeight="700" lineHeight="100%">
               2.579
             </Text>
-            <Text
-              ms="6px"
-              color="secondaryGray.600"
-              fontSize="sm"
-              fontWeight="500"
-            >
+            <Text ms="6px" color="secondaryGray.600" fontSize="sm" fontWeight="500">
               Visitors
             </Text>
           </Flex>
@@ -51,10 +38,7 @@ export default function DailyTraffic(props: { [x: string]: any }) {
         </Flex>
       </Flex>
       <Box h="240px" mt="auto">
-        <BarChart
-          chartData={barChartDataDailyTraffic}
-          chartOptions={barChartOptionsDailyTraffic}
-        />
+        <BarChart chartData={barChartDataDailyTraffic} chartOptions={barChartOptionsDailyTraffic} />
       </Box>
     </Card>
   );

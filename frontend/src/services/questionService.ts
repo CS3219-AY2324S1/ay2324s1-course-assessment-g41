@@ -1,8 +1,8 @@
-import { Question } from '@/@types/models/question';
+import { Question } from "@/@types/models/question";
 
-import { QuestionComplexity } from '@/@types/models/question';
+import { QuestionComplexity } from "@/@types/models/question";
 
-const PEER_PREP_A1_KEY = 'PEER_PREP_A1_KEY';
+const PEER_PREP_A1_KEY = "PEER_PREP_A1_KEY";
 
 // TODO: refactor to interface with backend question microservice
 class QuestionService {
@@ -17,7 +17,7 @@ class QuestionService {
     complexity: QuestionComplexity;
     categories: string[];
   }) {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -46,7 +46,7 @@ class QuestionService {
   }
 
   static removeQuestion({ id }: { id: number }) {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -56,7 +56,7 @@ class QuestionService {
   }
 
   static editQuestion(questionData: Question) {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return;
     }
 
@@ -83,7 +83,7 @@ class QuestionService {
   }
 
   static getQuestions() {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return [];
     }
 
@@ -96,9 +96,8 @@ class QuestionService {
   }
   static getQuestion(id: number) {
     const questions: Question[] = QuestionService.getQuestions();
-    const filteredQuestions = questions.filter(q => q.id === id)
+    const filteredQuestions = questions.filter((q) => q.id === id);
     return filteredQuestions.length > 0 ? filteredQuestions[0] : null;
-
   }
 
   private static validateAddQuestion({
@@ -113,18 +112,18 @@ class QuestionService {
     categories: string[];
   }) {
     if (!title) {
-      throw new Error('Missing title field.');
+      throw new Error("Missing title field.");
     }
     if (!description) {
-      throw new Error('Missing description field.');
+      throw new Error("Missing description field.");
     }
 
     if (!complexity) {
-      throw new Error('Missing complexity field.');
+      throw new Error("Missing complexity field.");
     }
 
     if (!categories || categories.length === 0) {
-      throw new Error('Missing categories field.');
+      throw new Error("Missing categories field.");
     }
 
     // check if duplicate exists
@@ -150,7 +149,7 @@ class QuestionService {
         }).length > 0;
 
     if (isDuplicate) {
-      throw new Error('Exact question already exists. No change detected.');
+      throw new Error("Exact question already exists. No change detected.");
     }
 
     return true;

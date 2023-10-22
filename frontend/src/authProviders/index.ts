@@ -1,13 +1,11 @@
-import { AuthProvider, AuthProviderType } from 'src/@types/auth';
+import { AuthProvider, AuthProviderType } from "src/@types/auth";
 
-export const authProviderFactory = (
-  type: AuthProviderType,
-): Promise<AuthProvider> => {
+export const authProviderFactory = (type: AuthProviderType): Promise<AuthProvider> => {
   // Uses dynamic import to reduce overhead
   switch (type) {
-    case 'jwt':
-      return import('./jwt').then((provider) => provider.jwtAuthProvider);
+    case "google":
+      return import("./google").then((provider) => provider.googleAuthProvider);
     default:
-      return import('./jwt').then((provider) => provider.jwtAuthProvider);
+      return import("./google").then((provider) => provider.googleAuthProvider);
   }
 };

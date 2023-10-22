@@ -1,8 +1,8 @@
-import dynamic from 'next/dist/shared/lib/dynamic';
-import React from 'react';
-import { isWindowAvailable } from 'src/utils/navigation';
-import { ChartProps, ChartState } from './LineAreaChart';
-const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+import dynamic from "next/dist/shared/lib/dynamic";
+import React from "react";
+import { isWindowAvailable } from "src/utils/navigation";
+import { ChartProps, ChartState } from "./LineAreaChart";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 class PieChart extends React.Component<ChartProps, ChartState> {
   state: ChartState = {

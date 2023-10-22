@@ -1,44 +1,28 @@
 // Chakra imports
-import {
-  Box,
-  Button,
-  Flex,
-  Icon,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
 // Custom components
-import Card from 'src/components/card/Card';
-import LineChart from 'src/components/charts/LineChart';
-import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-import { IoCheckmarkCircle } from 'react-icons/io5';
-import { MdBarChart, MdOutlineCalendarToday } from 'react-icons/md';
+import Card from "src/components/card/Card";
+import LineChart from "src/components/charts/LineChart";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { IoCheckmarkCircle } from "react-icons/io5";
+import { MdBarChart, MdOutlineCalendarToday } from "react-icons/md";
 // Assets
-import { RiArrowUpSFill } from 'react-icons/ri';
-import {
-  lineChartDataTotalSpent,
-  lineChartOptionsTotalSpent,
-} from 'src/variables/charts';
+import { RiArrowUpSFill } from "react-icons/ri";
+import { lineChartDataTotalSpent, lineChartOptionsTotalSpent } from "src/variables/charts";
 
 export default function TotalSpent(props: { [x: string]: any }) {
   const { ...rest } = props;
 
   // Chakra Color Mode
 
-  const textColor = useColorModeValue('secondaryGray.900', 'white');
-  const textColorSecondary = useColorModeValue('secondaryGray.600', 'white');
-  const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
-  const iconColor = useColorModeValue('brand.500', 'white');
-  const bgButton = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
-  const bgHover = useColorModeValue(
-    { bg: 'secondaryGray.400' },
-    { bg: 'whiteAlpha.50' },
-  );
-  const bgFocus = useColorModeValue(
-    { bg: 'secondaryGray.300' },
-    { bg: 'whiteAlpha.100' },
-  );
+  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const textColorSecondary = useColorModeValue("secondaryGray.600", "white");
+  const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const iconColor = useColorModeValue("brand.500", "white");
+  const bgButton = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const bgHover = useColorModeValue({ bg: "secondaryGray.400" }, { bg: "whiteAlpha.50" });
+  const bgFocus = useColorModeValue({ bg: "secondaryGray.300" }, { bg: "whiteAlpha.100" });
 
   const [mounted, setMounted] = useState(false);
 
@@ -69,11 +53,7 @@ export default function TotalSpent(props: { [x: string]: any }) {
             color={textColorSecondary}
             borderRadius="7px"
           >
-            <Icon
-              as={MdOutlineCalendarToday}
-              color={textColorSecondary}
-              me="4px"
-            />
+            <Icon as={MdOutlineCalendarToday} color={textColorSecondary} me="4px" />
             This month
           </Button>
           <Button
@@ -94,7 +74,7 @@ export default function TotalSpent(props: { [x: string]: any }) {
           </Button>
         </Flex>
       </Flex>
-      <Flex w="100%" flexDirection={{ base: 'column', lg: 'row' }}>
+      <Flex w="100%" flexDirection={{ base: "column", lg: "row" }}>
         <Flex flexDirection="column" me="20px" mt="28px">
           <Text
             color={textColor}
@@ -106,23 +86,12 @@ export default function TotalSpent(props: { [x: string]: any }) {
             $37.5K
           </Text>
           <Flex align="center" mb="20px">
-            <Text
-              color="secondaryGray.600"
-              fontSize="sm"
-              fontWeight="500"
-              mt="4px"
-              me="12px"
-            >
+            <Text color="secondaryGray.600" fontSize="sm" fontWeight="500" mt="4px" me="12px">
               Total Spent
             </Text>
             <Flex align="center">
               <Icon as={RiArrowUpSFill} color="green.500" me="2px" mt="2px" />
-              <Text
-                color="green.500"
-                fontSize="sm"
-                fontWeight="700"
-                lineHeight="100%"
-              >
+              <Text color="green.500" fontSize="sm" fontWeight="700" lineHeight="100%">
                 +2.45%
               </Text>
             </Flex>

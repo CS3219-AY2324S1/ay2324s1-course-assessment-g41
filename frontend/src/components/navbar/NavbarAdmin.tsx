@@ -9,10 +9,10 @@ import {
   Link,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
-import AdminNavbarLinks from 'src/components/navbar/NavbarLinksAdmin';
-import { isWindowAvailable } from 'src/utils/navigation';
+} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import AdminNavbarLinks from "src/components/navbar/NavbarLinksAdmin";
+import { isWindowAvailable } from "src/utils/navigation";
 
 export default function AdminNavbar(props: {
   secondary: boolean;
@@ -27,10 +27,10 @@ export default function AdminNavbar(props: {
   useEffect(() => {
     if (isWindowAvailable()) {
       // You now have access to `window`
-      window.addEventListener('scroll', changeNavbar);
+      window.addEventListener("scroll", changeNavbar);
 
       return () => {
-        window.removeEventListener('scroll', changeNavbar);
+        window.removeEventListener("scroll", changeNavbar);
       };
     }
   });
@@ -38,20 +38,17 @@ export default function AdminNavbar(props: {
   const { secondary, message, brandText } = props;
 
   // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
-  let mainText = useColorModeValue('navy.700', 'white');
-  let secondaryText = useColorModeValue('gray.700', 'white');
-  let navbarPosition = 'fixed' as const;
-  let navbarFilter = 'none';
-  let navbarBackdrop = 'blur(20px)';
-  let navbarShadow = 'none';
-  let navbarBg = useColorModeValue(
-    'rgba(244, 247, 254)',
-    'rgba(11,20,55)',
-  );
-  let navbarBorder = 'transparent';
-  let secondaryMargin = '0px';
-  let paddingX = '15px';
-  let gap = '0px';
+  let mainText = useColorModeValue("navy.700", "white");
+  let secondaryText = useColorModeValue("gray.700", "white");
+  let navbarPosition = "fixed" as const;
+  let navbarFilter = "none";
+  let navbarBackdrop = "blur(20px)";
+  let navbarShadow = "none";
+  let navbarBg = useColorModeValue("rgba(244, 247, 254)", "rgba(11,20,55)");
+  let navbarBorder = "transparent";
+  let secondaryMargin = "0px";
+  let paddingX = "15px";
+  let gap = "0px";
   const changeNavbar = () => {
     if (isWindowAvailable() && window.scrollY > 1) {
       setScrolled(true);
@@ -74,43 +71,42 @@ export default function AdminNavbar(props: {
       borderRadius="16px"
       borderWidth="1.5px"
       borderStyle="solid"
-
-      alignItems={{ xl: 'center' }}
-      display={secondary ? 'block' : 'flex'}
+      alignItems={{ xl: "center" }}
+      display={secondary ? "block" : "flex"}
       minH="75px"
-      justifyContent={{ xl: 'center' }}
+      justifyContent={{ xl: "center" }}
       lineHeight="25.6px"
       // mx="auto"
       mt={secondaryMargin}
       pb="8px"
-      right={{ base: '12px', md: '30px', lg: '30px', xl: '30px' }}
+      right={{ base: "12px", md: "30px", lg: "30px", xl: "30px" }}
       px={{
         sm: paddingX,
-        md: '10px',
+        md: "10px",
       }}
       ps={{
-        xl: '12px',
+        xl: "12px",
       }}
       pt="8px"
-      top={{ base: '12px', md: '16px', xl: '18px' }}
+      top={{ base: "12px", md: "16px", xl: "18px" }}
       w={{
-        base: 'calc(100vw - 6%)',
-        md: 'calc(100vw - 8%)',
-        lg: 'calc(100vw - 6%)',
-        xl: 'calc(100vw - 350px)',
-        '2xl': 'calc(100vw - 365px)',
+        base: "calc(100vw - 6%)",
+        md: "calc(100vw - 8%)",
+        lg: "calc(100vw - 6%)",
+        xl: "calc(100vw - 350px)",
+        "2xl": "calc(100vw - 365px)",
       }}
     >
       <Flex
         w="100%"
         flexDirection={{
-          sm: 'column',
-          md: 'row',
+          sm: "column",
+          md: "row",
         }}
-        alignItems={{ xl: 'center' }}
+        alignItems={{ xl: "center" }}
         mb={gap}
       >
-        <Box mb={{ sm: '1rem', md: '0px' }}>
+        <Box mb={{ sm: "1rem", md: "0px" }}>
           <Breadcrumb>
             <BreadcrumbItem color={secondaryText} fontSize="sm" mb="5px">
               <BreadcrumbLink href="#" color={secondaryText}>
@@ -134,22 +130,22 @@ export default function AdminNavbar(props: {
             fontSize="34px"
             _hover={{ color: { mainText } }}
             _active={{
-              bg: 'inherit',
-              transform: 'none',
-              borderColor: 'transparent',
+              bg: "inherit",
+              transform: "none",
+              borderColor: "transparent",
             }}
             _focus={{
-              boxShadow: 'none',
+              boxShadow: "none",
             }}
           >
             {brandText}
           </Link>
         </Box>
-        <Box ms="auto" w={{ sm: '100%', md: 'unset' }}>
+        <Box ms="auto" w={{ sm: "100%", md: "unset" }}>
           <AdminNavbarLinks
-            onOpen={props.onOpen}
+            // onOpen={props.onOpen}
             secondary={props.secondary}
-            fixed={props.fixed}
+            // fixed={props.fixed}
           />
         </Box>
       </Flex>
