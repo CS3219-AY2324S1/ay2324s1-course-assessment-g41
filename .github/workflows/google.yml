@@ -1,0 +1,157 @@
+name: Build and Deploy to GKE
+
+on:
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: cs3219-402414
+  GAR_LOCATION: asia-southeast1
+  REPOSITORY: peerprepimages
+  USER_IMAGE: user
+  QUESTIONS_IMAGE: questions
+  MATCHING_IMAGE: matching
+  COLLAB_IMAGE: collab
+  CLIENT_IMAGE: client
+  VIDEO_IMAGE: video
+  HISTORY_IMAGE: history
+  DOCUMENT_IMAGE: document
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+    - name: "Set up Cloud SDK"
+      uses: "google-github-actions/setup-gcloud@v1"
+
+    - name: Setup GAR
+      run: |-
+        gcloud auth configure-docker \
+        "$GAR_LOCATION-docker.pkg.dev"
+    
+    - name: Create GCP Key File
+      run: echo '${{ secrets.GCP_KEY }}' > backend/key.json
+
+    - name: List files in the repository
+      run: ls -lah
+
+    # Build the Docker image
+    - name: Build User
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$USER_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/user/Dockerfile \
+          ./backend
+          
+    - name: Build Questions
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$QUESTIONS_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/question/Dockerfile \
+          ./backend
+
+    - name: Build Matching
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$MATCHING_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/matching/Dockerfile \
+          ./backend
+          
+    - name: Build Collab
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$COLLAB_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/collaboration/Dockerfile \
+          ./backend
+
+    - name: Build Client
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$CLIENT_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./frontend/Dockerfile \
+          ./frontend
+
+    - name: Build Video
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$VIDEO_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/videostreaming/Dockerfile \
+          ./backend
+    
+    - name: Build History
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$HISTORY_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/history/Dockerfile \
+          ./backend
+
+    - name: Build Doc
+      run: |-
+        docker build \
+          --tag "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCUMENT_IMAGE:latest" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --file ./backend/microservices/document/Dockerfile \
+          ./backend
+    
+    # Push the Docker image to Google Artifact Registry
+    - name: Publish User
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$USER_IMAGE:latest"
+
+    - name: Publish Questions
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$QUESTIONS_IMAGE:latest"
+
+     # Push the Docker image to Google Artifact Registry
+    - name: Publish Matching
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$MATCHING_IMAGE:latest"
+
+    - name: Publish Collab
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$COLLAB_IMAGE:latest"
+
+    - name: Publish Client
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$CLIENT_IMAGE:latest"
+
+    - name: Publish History
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$HISTORY_IMAGE:latest"
+
+    - name: Publish Video
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$VIDEO_IMAGE:latest"
+
+    - name: Publish Document
+      run: |-
+        docker push "$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCUMENT_IMAGE:latest"

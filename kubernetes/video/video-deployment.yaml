@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"80":"peerprep-backendconfig"}}'
+  name: videostreaming-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video
+  template:
+    metadata:
+      labels:
+        app: video
+    spec:
+      containers:
+      - name: video
+        image: asia-southeast1-docker.pkg.dev/cs3219-402414/peerprepimages/videostreaming:$latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: global-config
+        - configMapRef:
+            name: video-config
+        resources:
+          requests:
+            cpu: "250m"  
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"

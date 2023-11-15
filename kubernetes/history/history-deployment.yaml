@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: history-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: history
+  template:
+    metadata:
+      labels:
+        app: history
+    spec:
+      containers:
+      - name: history
+        image: asia-southeast1-docker.pkg.dev/cs3219-402414/peerprepimages/history:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: global-config
+        - configMapRef:
+            name: history-config
+        resources:
+          requests:
+            cpu: "250m"  
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"

@@ -1,0 +1,8 @@
+# only used for development
+# built in localhost
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./package-lock.json ./
+COPY . .
+RUN npm ci
+CMD ["npm", "run", "dev"]

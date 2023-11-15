@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+  labels:
+    app: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      labels:
+        app: user
+    spec:
+      containers:
+      - name: user
+        image: asia-southeast1-docker.pkg.dev/cs3219-402414/peerprepimages/user:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: global-config
+        - configMapRef:
+            name: user-config
+        resources:
+          requests: 
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: question-config
+data:
+  MONGO_DBNAME: test
+  SKIP_AUTH: "FALSE"

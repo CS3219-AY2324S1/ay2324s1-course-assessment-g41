@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: document-config
+data:
+  COLLAB_SERVICE_ENDPOINT: "http://collab-service:80/collaboration"
+  GOOGLE_APPLICATION_CREDENTIALS: "/home/microservices/document/key.json"
+  REDIS_DOCUMENT_URL: "redis://redis-document:6379"
+  ATTEMPT_TOPIC: "PROD_ATTEMPT_TOPIC"

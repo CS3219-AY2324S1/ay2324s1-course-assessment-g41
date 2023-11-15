@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: matching-config
+data:
+  GOOGLE_APPLICATION_CREDENTIALS: "/home/microservices/matching/key.json"
+  COLLAB_SERVICE_ENDPOINT: "http://collab-service:80/collaboration"
+  MATCHING_REQUEST_REDIS_URL: "redis://redis:6379"
+  MATCHING_PAIR_REDIS_URL: "redis://redis:6379"
+  MATCHING_TOPIC: "PROD_MATCHING_TOPIC"
+  MATCHING_TOPIC_SUB: "PROD_MATCHING_TOPIC-sub"

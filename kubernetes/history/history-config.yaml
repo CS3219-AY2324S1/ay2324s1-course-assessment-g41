@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: history-config
+data:
+  MONGO_DBNAME: "test"
+  MONGO_HISTORY: "mongodb://user:password@mongo-history:27017"
+  GOOGLE_APPLICATION_CREDENTIALS: "/home/microservices/history/key.json"
+  COLLAB_SERVICE_ENDPOINT: "http://collab-service:80/collaboration"
+  ATTEMPT_TOPIC_SUB: "PROD_ATTEMPT_TOPIC-sub"

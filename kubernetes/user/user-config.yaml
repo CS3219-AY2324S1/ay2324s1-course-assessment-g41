@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-config
+data:
+  POSTGRES_CONN_COUNT: "10"
+  POSTGRES_TIMEOUT: "300"
+  OAUTH_GOOGLE_CLIENT: "client"
+  OAUTH_GOOGLE_SECRET: "secret"
+  LOGIN_REDIRECT_URL: "https://peerprep.dev/dashboard"
+  AUTH_DOMAIN: "https://api.peerprep.dev"
+  SKIP_LOGIN_AUTH: "FALSE"
+  SKIP_AUTH: "FALSE"

@@ -1,0 +1,42 @@
+{
+  "name": "document",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node build.mjs && node dist/microservices/document/src/index.mjs",
+    "dev": "nodemon --inspect -e ts --watch ./ --watch ../../packages --exec npm start",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s src -o dist"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^4.0.6",
+    "@hocuspocus/extension-logger": "^2.6.1",
+    "@hocuspocus/extension-redis": "^2.6.1",
+    "@hocuspocus/extension-webhook": "^2.6.1",
+    "@hocuspocus/server": "^2.6.1",
+    "@hocuspocus/transformer": "^2.6.1",
+    "@types/async-lock": "^1.4.1",
+    "@types/cors": "^2.8.16",
+    "@types/express-ws": "^3.0.4",
+    "@types/node": "^16.11.11",
+    "@upstash/redis": "^1.25.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.19.5",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "fs": "^0.0.1-security",
+    "glob": "^10.3.10",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.0",
+    "objection": "^3.1.2",
+    "path": "^0.12.7",
+    "tscpaths": "^0.0.9",
+    "ws": "^8.14.2",
+    "yjs": "^13.6.4"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0"
+  }
+}

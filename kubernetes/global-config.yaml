@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-config
+data:
+  POSTGRES: "postgresql://postgres:postgres@postgres:5432/postgres?connect_timeout=300"
+  MONGO: "mongodb://user:password@mongo:27017"
+  EXE_ENV: "PROD"
+  JWT_SECRET: "EXAMPLE_SECRERT"
+  REFRESH_COOKIE_KEY: "EXAMPLE_PEERPREPREFRESHTOKEN"
+  ACCESS_COOKIE_KEY: "EXAMPLE_PEERPREPACCESSTOKEN"
+  SERVER_PORT: "3000"

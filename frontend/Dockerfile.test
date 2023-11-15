@@ -1,0 +1,10 @@
+# only used for testing
+# built in github action environment
+FROM node:alpine
+WORKDIR '/app'
+COPY ./package.json ./package-lock.json ./
+RUN npm install
+# copy over since this is not built from docker compose
+# so not able to make use of volumes
+COPY . .
+CMD ["npm", "run", "dev"]

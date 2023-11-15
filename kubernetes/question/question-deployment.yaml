@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: question-deployment
+  labels:
+    app: question
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: question
+  template:
+    metadata:
+      labels:
+        app: question
+    spec:
+      containers:
+      - name: question
+        image: asia-southeast1-docker.pkg.dev/cs3219-402414/peerprepimages/questions:latest
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: question-config
+        - configMapRef:
+            name: global-config
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+      restartPolicy: Always
