@@ -4,17 +4,15 @@ import { Flex, Box, IconButton, Button, Stack, useColorModeValue } from "@chakra
 import { MdVideocam, MdVideocamOff, MdMic, MdMicOff } from "react-icons/md";
 import { useVideoContext } from "@/contexts/VideoContext";
 
-interface VideoStreamProps {
-  // localStream: MediaStream | null;
-  // remoteStream: MediaStream | null;
-  // onToggleCamera: () => void;
-  // toggleMicrophone: () => void;
-  // isCameraOn: boolean;
-  // isMicrophoneOn: boolean;
-  // isLoading: boolean;
-}
+const log = (message: string, data: any = {}) => {
+  console.log(`[VideoStream] ${message}`, data);
+};
 
-const VideoStream: React.FC<VideoStreamProps> = () => {
+const logError = (message: string, error: any = {}) => {
+  console.error(`[VideoStream Error] ${message}`, error);
+};
+
+const VideoStream: React.FC = () => {
   const localVideoRef = useRef<HTMLVideoElement>(null);
   const remoteVideoRef = useRef<HTMLVideoElement>(null);
   const bgColor = useColorModeValue("whiteAlpha.600", "blackAlpha.600");
@@ -30,12 +28,14 @@ const VideoStream: React.FC<VideoStreamProps> = () => {
 
   useEffect(() => {
     if (localVideoRef.current) {
+      log("localStream", localStream);
       localVideoRef.current.srcObject = localStream;
     }
   }, [localStream]);
 
   useEffect(() => {
     if (remoteVideoRef.current) {
+      log("remoteStream", remoteStream);
       remoteVideoRef.current.srcObject = remoteStream;
     }
   }, [remoteStream]);
@@ -89,8 +89,8 @@ const VideoStream: React.FC<VideoStreamProps> = () => {
           Start Video Call
         </Button>
       )}
-
-      {remoteStream && (
+      {/* karwi: hacky fix for unstable remote stream */}
+      {remoteStream && localStream && (
         <Box position="relative" width="160px" height="120px" bg="black" borderRadius="lg">
           <video
             ref={remoteVideoRef}
