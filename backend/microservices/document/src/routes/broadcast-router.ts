@@ -6,7 +6,7 @@ class BroadcastRouter implements Extension {
     console.log("THIS IS THE AUTH PATH");
     console.log("REQUEST HEADERS", data.requestHeaders);
     console.log("REQUEST PARAMS", data.requestParameters);
-    // await BroadcastController.checkAuthForUser(data)
+    await BroadcastController.checkAuthForUser(data)
   }
 
   /**
