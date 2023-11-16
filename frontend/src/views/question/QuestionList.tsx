@@ -82,7 +82,7 @@ export const QuestionsList = ({
             <AlertDescription>
               {hasWritePerms
                 ? "This question repository helps you save questions you have encountered from past interviews! You can also design and save your own question!"
-                : "The question repostiroy is currently empty. Try again later."}
+                : "The question repository is currently empty. Try again later."}
             </AlertDescription>
             {hasWritePerms ? (
               <Link href={"/coding-questions/add-question"}>
