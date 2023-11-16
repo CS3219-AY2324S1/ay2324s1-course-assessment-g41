@@ -12,12 +12,9 @@ const autoSaveAttempt = (data: onStoreDocumentPayload) => {
 
 const checkAuthForUser = async (data: onAuthenticatePayload) => {
   console.log("REQUEST HEADERS FOR AUTH", data.requestHeaders);
-  // const token = parseCookie(data.requestHeaders.cookie || "");
-  // const userId = AuthService.verifyUserExists(token)
-  const userId = data.token;
-  const promiseVerifications = [RoomService.verifyUserBelongsInRoom(userId, data.documentName), RoomService.verifyRoomIsOpen(data.documentName)] 
   try {
-    await Promise.all(promiseVerifications)
+    await RoomService.verifyRoomIsOpen(data.documentName)
+    console.log("ROOM IS OPEN", data.documentName);
   } catch (err) {
     // at least one verification failed
     console.error("Authorization error", err)
@@ -46,8 +43,12 @@ const handleStatelessMessage = async (data: onStatelessPayload) => {
 const handleDisconnect = async (data: onDisconnectPayload) => {
   console.log(`total users in room: ${data.clientsCount}`);
   if (data.clientsCount === 0) {
-    // no one else is in the room, so the last user who leaves the room closes the room
-    await RoomService.closeRoom(data.documentName, data.requestHeaders);
+    try {
+      // no one else is in the room, so the last user who leaves the room closes the room
+      await RoomService.closeRoom(data.documentName, data.requestHeaders);
+    } catch (err) {
+      console.error("CLOSE ROOM", data.documentName);
+    }
   }
 }
 
