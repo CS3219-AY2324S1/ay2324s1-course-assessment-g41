@@ -12,6 +12,7 @@ import io, { Socket } from "socket.io-client";
 import { HOST_API } from "@/config";
 import { useToast } from "@chakra-ui/react";
 
+// karwi: fix remote null
 const log = (message: string, data: any = {}) => {
   console.log(`[VideoContext] ${message}`, data);
 };
