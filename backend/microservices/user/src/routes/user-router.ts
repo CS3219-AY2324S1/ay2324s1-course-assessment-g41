@@ -13,6 +13,18 @@ userRouter.get('/topics', UserController.readCurrentTopics);
 userRouter.post('/topics', UserController.updateTopics);
 userRouter.delete('/topics', UserController.deleteTopics);
 
+userRouter.get('/load', (req, res) => {
+    const n = 10000000; 
+
+    let largeArray = new Array(n);
+
+    for (let i = 0; i < largeArray.length; i++) {
+        largeArray[i] = Math.random(); // Assign random values to each element
+    }
+
+    res.send("boom");
+});
+
 userRouter.get('/:id', UserController.getUserById);
 userRouter.get('/', UserController.getCurrentUser);
 userRouter.patch('/', UserController.updateUser);

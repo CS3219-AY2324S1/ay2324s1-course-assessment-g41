@@ -11,7 +11,9 @@ import Peer, { SignalData } from "simple-peer";
 import io, { Socket } from "socket.io-client";
 import { HOST_API } from "@/config";
 import { useToast } from "@chakra-ui/react";
+import useTrackDependencies from "@/hooks/dev/useTrackDependencies";
 
+// karwi: fix remote null
 const log = (message: string, data: any = {}) => {
   console.log(`[VideoContext] ${message}`, data);
 };
@@ -67,12 +69,14 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
   useEffect(() => {
     // Initialize socket on first render
     if (!socket.current) {
+      log("initializeSocket", roomId);
       socket.current = initializeSocket(roomId);
     }
 
     // Cleanup on unmount
     return () => {
       if (socket.current) {
+        log("disconnect socket", roomId);
         socket.current.disconnect();
       }
     };
@@ -80,12 +84,14 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
 
   const startLocalStream = useCallback(
     async (isVideoOn: boolean, isAudioOn: boolean) => {
+      log("startLocalStream");
       setIsLoading(true);
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: isVideoOn,
           audio: isAudioOn,
         });
+        log("startLocalStream: setLocalStream", stream);
         setLocalStream(stream);
         toast({
           title: "Local stream started",
@@ -113,6 +119,7 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
     log("stopLocalStream");
     if (localStream) {
       localStream.getTracks().forEach((track) => track.stop());
+      log("stopLocalStream: setLocalStream null");
       setLocalStream(null);
       log("emit streamStopped");
       socket.current?.emit("streamStopped", { roomId });
@@ -159,13 +166,13 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
 
       peer.on("error", (err) => {
         logError("Peer connection error:", err);
-        toast({
-          title: "Peer Connection Error",
-          description: String(err),
-          status: "error",
-          duration: 5000,
-          isClosable: true,
-        });
+        // toast({
+        //   title: "Peer Connection Error",
+        //   description: String(err),
+        //   status: "error",
+        //   duration: 5000,
+        //   isClosable: true,
+        // });
       });
 
       peer.on("connect", () => {
@@ -176,7 +183,10 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
         log("Peer connection closed");
       });
 
-      peer.on("stream", setRemoteStream);
+      peer.on("stream", (data) => {
+        log("createAndSetupPeer: setRemoteStream", data);
+        setRemoteStream(data);
+      });
 
       if (signal) {
         peer.signal(signal);
@@ -184,7 +194,7 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
 
       return peer;
     },
-    [localStream, toast],
+    [localStream],
   );
 
   const callPeer = useCallback(() => {
@@ -252,6 +262,8 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
     // }
   }, []);
 
+  useTrackDependencies("VideoContext", [answerCall, socket]);
+
   useEffect(() => {
     log("Setting up socket event listeners");
 
@@ -268,13 +280,13 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
 
     socket.current?.on("error", (error) => {
       logError("Socket error: ", error);
-      toast({
-        title: "Socket Error",
-        description: "An error occurred with the socket connection.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
+      // toast({
+      //   title: "Socket Error",
+      //   description: "An error occurred with the socket connection.",
+      //   status: "error",
+      //   duration: 5000,
+      //   isClosable: true,
+      // });
     });
 
     socket.current?.on("callUser", (data) => {
@@ -305,6 +317,7 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
 
     socket.current?.on("streamStopped", () => {
       log("Remote peer's stream stopped.");
+      log("streamStopped: setRemoteStream(null)");
       setRemoteStream(null);
       toast({
         title: "Stream Stopped",
@@ -336,6 +349,7 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
         isClosable: true,
       });
       if (peerId !== socket.current?.id) {
+        log("peerDisconnected: setRemoteStream(null)");
         setRemoteStream(null);
       }
     });
@@ -349,6 +363,7 @@ export const VideoContextProvider: React.FC<VideoContextProviderProps> = ({ chil
       socket.current?.off("roomFull");
       socket.current?.off("peerDisconnected");
     };
+    // karwi: fix deps
   }, [answerCall, socket, toast]);
 
   useEffect(() => {

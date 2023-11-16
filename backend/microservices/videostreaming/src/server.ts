@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import { createServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import { socketAuthMiddleware } from './middlewares/auth-middleware';
-import healthCheckRouter from "../../../shared/router/healthcheck-router"
+import healthCheckRouter from '../../../shared/router/healthcheck-router';
 import Redis from 'ioredis';
 import { createAdapter } from 'socket.io-redis';
 
@@ -21,12 +21,12 @@ class ServerApp {
     this.io = new SocketIOServer(this.httpServer, {
       cors: {
         origin: [
-        "https://peerprep.dev",
-        "https://www.peerprep.dev",
-        "https://api.peerprep.dev",
-        "https://www.api.peerprep.dev:3000",
-        "http://localhost:3000"
-      ],
+          'https://peerprep.dev',
+          'https://www.peerprep.dev',
+          'https://api.peerprep.dev',
+          'https://www.api.peerprep.dev:3000',
+          'http://localhost:3000',
+        ],
         credentials: true,
       },
       path: '/videostreaming/socket.io', // Set custom path here
@@ -39,16 +39,18 @@ class ServerApp {
   private configMiddleware() {
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json({ limit: '1mb' }));
-    this.app.use(cors({
-      origin: [
-        "https://peerprep.dev",
-        "https://www.peerprep.dev",
-        "https://api.peerprep.dev",
-        "https://www.api.peerprep.dev:3000",
-        "http://localhost:3000"
-      ],
-      credentials: true,
-    }));
+    this.app.use(
+      cors({
+        origin: [
+          'https://peerprep.dev',
+          'https://www.peerprep.dev',
+          'https://api.peerprep.dev',
+          'https://www.api.peerprep.dev:3000',
+          'http://localhost:3000',
+        ],
+        credentials: true,
+      })
+    );
     this.app.use('/health', healthCheckRouter);
   }
 
@@ -130,10 +132,10 @@ class ServerApp {
           .in(roomId)
           .fetchSockets()
           .then((sockets) => {
-            if (sockets.length < 2) {
+            // karwi: undo check
+            if (true) {
               console.log(`Client ${socket.id} joining room: ${roomId}`);
               socket.join(roomId);
-
               // Register event listeners inside the then block
               socket.on('disconnect', () => {
                 console.log(`Client disconnected: ${socket.id}`);
@@ -143,7 +145,6 @@ class ServerApp {
                   .emit('peerDisconnected', { peerId: socket.id });
                 console.log(`Client ${socket.id} left room: ${roomId}`);
               });
-
               socket.on('callUser', (data) => {
                 console.log(`Broadcasting call signal in room: ${data.roomId}`);
                 socket.to(data.roomId).emit('callUser', {
@@ -151,14 +152,12 @@ class ServerApp {
                   name: data.name,
                 });
               });
-
               socket.on('answerCall', (data) => {
                 console.log(
                   `Broadcasting answer signal in room: ${data.roomId}`
                 );
                 socket.to(data.roomId).emit('callAccepted', data.signal);
               });
-
               socket.on('streamStopped', (data) => {
                 console.log(
                   `Received 'streamStopped' event in room ${data.roomId}`
