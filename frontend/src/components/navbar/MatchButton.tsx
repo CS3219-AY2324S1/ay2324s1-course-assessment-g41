@@ -74,7 +74,11 @@ const MatchButton: FC<ButtonProps> = (buttonProps) => {
     (response: any) => {
       if (response.roomId) {
         openRoom(response.roomId).then(() => {
-          setComplexity(selectedComplexity);
+          // save complexity
+          const enumIndex = Object.values(QuestionComplexity).findIndex(
+            (complexityVal) => complexityVal === selectedComplexity,
+          );
+          setComplexity(enumIndex + 1);
           router.push(`/collab-room/${response.roomId}`);
         });
       }

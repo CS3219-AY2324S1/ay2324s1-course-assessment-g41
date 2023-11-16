@@ -38,10 +38,7 @@ export function SidebarLinks(props: SidebarLinksProps) {
       if (route.isHidden) {
         return null;
       }
-      if (
-        route.layout === "" ||
-        route.layout === "/auth"
-      ) {
+      if (route.layout === "" || route.layout === "/auth") {
         return (
           <Link key={index} href={route.layout + route.path}>
             {route.icon ? (
