@@ -14,4 +14,4 @@ RUN cd ../../shared && npm ci && cd ../microservices/document
 RUN npm ci
 
 # Start your application
-CMD [ "npm", "run", "dev"]
+CMD [ "npm", "run", "start"]

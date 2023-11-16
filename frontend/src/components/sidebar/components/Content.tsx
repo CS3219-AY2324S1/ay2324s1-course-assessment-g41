@@ -23,21 +23,6 @@ function SidebarContent(props: SidebarContentProps) {
           <SidebarLinks routes={routes} />
         </Box>
       </Stack>
-
-      {/* <Box borderRadius="30px">
-        <video
-          src={'/img/dashboards/sidebarcard2.mp4'}
-          autoPlay
-          muted
-          loop
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            // borderRadius: '0 0 0 100px',
-          }}
-        />
-      </Box> */}
     </Flex>
   );
 }

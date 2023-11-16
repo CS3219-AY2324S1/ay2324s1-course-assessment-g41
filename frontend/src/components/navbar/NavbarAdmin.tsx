@@ -1,4 +1,3 @@
-/* eslint-disable */
 // Chakra Imports
 import {
   Box,
@@ -60,13 +59,13 @@ export default function AdminNavbar(props: {
   return (
     <Box
       position={navbarPosition}
-      // boxShadow={navbarShadow}
-      // bg={navbarBg}
+      boxShadow={navbarShadow}
+      bg={navbarBg}
       background={navbarBg}
       borderColor={navbarBorder}
       filter={navbarFilter}
-      // backdropFilter={navbarBackdrop}
-      // backgroundPosition="center"
+      backdropFilter={navbarBackdrop}
+      backgroundPosition="center"
       backgroundSize="cover"
       borderRadius="16px"
       borderWidth="1.5px"
@@ -76,7 +75,7 @@ export default function AdminNavbar(props: {
       minH="75px"
       justifyContent={{ xl: "center" }}
       lineHeight="25.6px"
-      // mx="auto"
+      mx="auto"
       mt={secondaryMargin}
       pb="8px"
       right={{ base: "12px", md: "30px", lg: "30px", xl: "30px" }}
@@ -109,8 +108,8 @@ export default function AdminNavbar(props: {
         <Box mb={{ sm: "1rem", md: "0px" }}>
           <Breadcrumb>
             <BreadcrumbItem color={secondaryText} fontSize="sm" mb="5px">
-              <BreadcrumbLink href="#" color={secondaryText}>
-                Pages
+              <BreadcrumbLink href="/dashboard" color={secondaryText}>
+                Home
               </BreadcrumbLink>
             </BreadcrumbItem>
 
